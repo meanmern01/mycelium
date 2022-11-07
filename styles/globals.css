@@ -1,20 +1,311 @@
+@import url('/font-awesome-5.8.1/css/font-awesome.min.css');
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Inter !important;
+    background-color: #FEFFF7 !important;
+    height: 100% !important;
 }
 
 a {
   color: inherit;
   text-decoration: none;
 }
-
-* {
-  box-sizing: border-box;
+div#__next {
+  height: 100%;
+}
+.mainHolder
+{
+  height: 100%;
+}
+/* -------------------Navbar---------------------------- */
+.signInBtnNavbar
+{
+  border: 1px solid #896EB5;
+  border-radius: 83px;
+  padding: 8px 35px !important;
+  background-color: #896EB5;
+  color: #fff !important;
+}
+nav.navbar.navbar-expand-lg.navbar-light
+{
+  padding: 3% 5% !important;
+  background-color: #FEFFF7 ;
 }
 
+
+/* -------------------Navbar---------------------------- */
+
+/* ------------------HomepageBody Component------------------- */
+
+.contentHolder
+{
+  height: 100%;
+  background-image: url("../public/Frame.png");
+  background-position: right;
+  background-repeat: no-repeat;
+background-size: auto;
+}
+.contentHolder .Header
+{
+  width: 80%;
+    margin: 0px auto;
+}
+#headerComponentHolder
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+input.me-2.form-control {
+      border-radius: 7px;
+      border-color: #F0F2E7;
+        background: #F0F2E7;
+        width: 80%;
+}
+.searchResultHolder
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin: 20px 0px;
+}
+.tableBody
+{
+  margin: 25px auto;
+  width: 80%;
+}
+.tableBody .container
+{
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* ------------------HomepageBody Component------------------- */
+/* ----------------_Table-component-------------- */
+#deviceTable
+{
+  width: 80% !important;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+
+#deviceTable thead tr th {
+  text-align: center;
+  padding: 20px  !important;
+}
+#deviceTable tbody tr td {
+  text-align: center;
+  padding: 15px  !important;
+  
+}
+.tableCaption
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.tableCaption p
+{
+  margin-right: 10px;
+}
+.menuLink
+{
+  text-decoration: none;
+  color: black;
+}
+.menuLink:hover
+{
+  text-decoration: none;
+  color: black;
+}
+/* ----------------_Table-component-------------- */
+/* -------------------Footer------------------ */
+.mainHolderFooter
+{
+  background-color: black;
+  color: #fff;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.mainHolderFooter  .SecondCol
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.mainHolderFooter .firstCol 
+{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.mainHolderFooter .firstCol .footerInfoRowFirst
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.mainHolderFooter .firstCol .footerInfoRowFirst .firstSubCol
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.mainHolderFooter .firstCol .footerInfoRowFirst p
+{
+  font-size: 13px;
+    line-height: 13.31px;
+    margin:  0px 0px 10px;
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+.mainHolderFooter .firstCol .footerInfoRowFirst .secondSubCol
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.mainHolderFooter .firstCol .footerInfoRowFirst .secondSubCol p {
+  font-size: 13px;
+    line-height: 13.31px;
+    margin: 0px;
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+.mainHolderFooter .firstCol .footerInfoRowSecond
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px auto;
+}
+.mainHolderFooter .firstCol .footerInfoRowSecond p
+{
+  font-size: 11px;
+  line-height: 13.31px;
+  margin: 0px;
+  color: #FFFFFF;
+}
+
+/* -----------------Single-page---------------------------- */
+.MuiBox-root.css-19kzrtu
+{
+  padding: 0px;
+}
+.tabPanelLeftPart
+{
+  border-right: 2px solid black;
+  padding: 24px;
+  width: -webkit-fill-available;
+}
+.tabPanelRightPart
+{
+
+  padding: 24px;
+  width: -webkit-fill-available;
+}
+.singleProdcutContainer
+{
+  height: 100%;
+    background-image: url("../public/Frame.png");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+.singleHeaderContainer
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+}
+.second_singleHeaderContainer
+{
+  margin-left: 1.5%;
+}
+.second_singleHeaderContainer .rankedContianer
+{
+  max-width: 170px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+ align-items: center;
+}
+.companyNameHolder h1
+{
+  font-family: inter;
+  font-weight: 600;
+  font-size: 36px;
+margin-bottom: 0;
+}
+.companyDescription p 
+{
+  margin-bottom: 0;
+  font-family: inter;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21.78px;
+}
+.tabPanelSingleDevice
+{
+  margin-top: 1.5%;
+}
+.tabPanelBodyMain
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
+.companyDetailsHolder
+{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.informationHolder h4
+{
+  font-family: inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15.73px;
+ opacity: 0.5;
+ color: #323232;
+ margin-bottom: 0px;
+}
+.informationHolder p
+{
+  font-family: inter;
+  max-width: 150px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18.15px;
+}
+.subInformationHolder
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.subInformationHolder p
+{
+ color: #6EB575;
+ margin-bottom: 0px;
+ font-size: 36px;
+ font-weight: 600;
+ margin-left: 5%;
+}
+/* -----------------Single-page---------------------------- */
+
+/* -------------------Footer------------------ */
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
