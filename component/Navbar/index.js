@@ -13,6 +13,10 @@ const NavigationBar = () => {
       <Navbar.Brand href="#home">
         <Image src="/Group 55.png" width={180.82} height={32.79} />
       </Navbar.Brand>
+      <Nav.Link href="#deets" className="signInBtnNavbar signInBtnNavbar_mobile">
+        {" "}
+        Sign In{" "}
+      </Nav.Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto"></Nav>
@@ -22,9 +26,6 @@ const NavigationBar = () => {
           <Nav.Link href="#deets" className="signInBtnNavbar">
             {" "}
             Sign In{" "}
-          </Nav.Link>
-          <Nav.Link eventKey={2} href="#memes">
-            <FontAwesomeIcon icon={faBars} />
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>

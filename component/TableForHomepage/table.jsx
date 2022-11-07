@@ -21,27 +21,22 @@ const DeviceTable = () => {
         <tr>
           <td style={{ color: "#896EB5" }}>1</td>
 
-          <td
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-              textAlign: "left",
-            }}
-          >
-            <Image src="/grizzle square logo 1.png" width={22} height={22} />
-            <p
-              style={{
-                color: "black",
-                marginBottom: "0px",
-                fontWeight: "bold",
-                textDecoration: null,
-              }}
-            >
-              <Link className="menuLink" href="singleDevice/Mark">
-                Mark
-              </Link>
-            </p>
+          <td>
+            <div className="img_heading">
+              <Image src="/grizzle square logo 1.png" width={22} height={22} />
+              <p
+                style={{
+                  color: "black",
+                  marginBottom: "0px",
+                  fontWeight: "bold",
+                  textDecoration: null,
+                }}
+              >
+                <Link className="menuLink" href="singleDevice/Mark">
+                  Mark
+                </Link>
+              </p>
+            </div>
           </td>
 
           <td>0.0688</td>
@@ -65,16 +60,11 @@ const DeviceTable = () => {
         </tr>
         <tr>
           <td style={{ color: " #896EB5" }}>2</td>
-          <td
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-              textAlign: "left",
-            }}
-          >
-            <Image src="/grizzle square logo 1.png" width={22} height={22} />
-            <p style={{ marginBottom: "0px", fontWeight: "bold" }}>Mark</p>
+          <td>
+            <div className="img_heading">
+              <Image src="/grizzle square logo 1.png" width={22} height={22} />
+              <p style={{ marginBottom: "0px", fontWeight: "bold" }}>Mark</p>
+            </div>
           </td>
           <td>0.0688</td>
           <td>unknown</td>
@@ -83,16 +73,11 @@ const DeviceTable = () => {
         </tr>
         <tr>
           <td style={{ color: " #896EB5" }}>3</td>
-          <td
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-              textAlign: "left",
-            }}
-          >
-            <Image src="/grizzle square logo 1.png" width={22} height={22} />
-            <p style={{ marginBottom: "0px", fontWeight: "bold" }}>Mark</p>
+          <td>
+            <div className="img_heading">
+              <Image src="/grizzle square logo 1.png" width={22} height={22} />
+              <p style={{ marginBottom: "0px", fontWeight: "bold" }}>Mark</p>
+            </div>
           </td>
           <td>0.0688</td>
           <td>unknown</td>
@@ -101,16 +86,11 @@ const DeviceTable = () => {
         </tr>
         <tr>
           <td style={{ color: " #896EB5" }}>4</td>
-          <td
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-              textAlign: "left",
-            }}
-          >
-            <Image src="/grizzle square logo 1.png" width={22} height={22} />
-            <p style={{ marginBottom: "0px", fontWeight: "bold" }}>Mark</p>
+          <td>
+            <div className="img_heading">
+              <Image src="/grizzle square logo 1.png" width={22} height={22} />
+              <p style={{ marginBottom: "0px", fontWeight: "bold" }}>Mark</p>
+            </div>
           </td>
           <td>0.0688</td>
           <td>unknown</td>
@@ -119,16 +99,11 @@ const DeviceTable = () => {
         </tr>
         <tr>
           <td style={{ color: " #896EB5" }}>5</td>
-          <td
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-              textAlign: "left",
-            }}
-          >
-            <Image src="/grizzle square logo 1.png" width={22} height={22} />
-            <p style={{ marginBottom: "0px", fontWeight: "bold" }}>Mark</p>
+          <td>
+            <div className="img_heading">
+              <Image src="/grizzle square logo 1.png" width={22} height={22} />
+              <p style={{ marginBottom: "0px", fontWeight: "bold" }}>Mark</p>
+            </div>
           </td>
           <td>0.0688</td>
           <td>unknown</td>
@@ -137,16 +112,11 @@ const DeviceTable = () => {
         </tr>
         <tr>
           <td style={{ color: " #896EB5" }}>6</td>
-          <td
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-              textAlign: "left",
-            }}
-          >
-            <Image src="/grizzle square logo 1.png" width={22} height={22} />
-            <p style={{ marginBottom: "0px", fontWeight: "bold" }}>Mark</p>
+          <td>
+            <div className="img_heading">
+              <Image src="/grizzle square logo 1.png" width={22} height={22} />
+              <p style={{ marginBottom: "0px", fontWeight: "bold" }}>Mark</p>
+            </div>
           </td>
           <td>0.0688</td>
           <td>unknown</td>

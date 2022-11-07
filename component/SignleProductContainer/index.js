@@ -97,8 +97,9 @@ const TabPanelSingleDevice = () => {
         <Box
           sx={{
             width: "80%",
-            border: "1px solid white",
+            // border: "1px solid white",
             backgroundColor: "white",
+            boxShadow: "0px 4px 14px rgba(0, 0, 0, 0.15)"
           }}
         >
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -107,15 +108,15 @@ const TabPanelSingleDevice = () => {
               onChange={handleChange}
               aria-label="basic tabs example"
             >
-              <Tab label="Item One" {...a11yProps(0)} />
-              <Tab label="Item Two" {...a11yProps(1)} />
+              <Tab label="2021" {...a11yProps(0)} />
+              <Tab label="2022" {...a11yProps(1)} />
             </Tabs>
           </Box>
           <TabPanel value={value} index={0}>
-            <TabPanelBody />
+            <TabPanelBody companyName={"2021"} />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            Item Two
+            <TabPanelBody companyName={"2022"} />
           </TabPanel>
         </Box>
       </Container>
