@@ -1,4 +1,5 @@
-import Image from "next/image";
+// import Image from "next/image";
+import { Container, Image } from "react-bootstrap";
 import Link from "next/link";
 import React, { useState } from "react";
 import { Table } from "react-bootstrap";

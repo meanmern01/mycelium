@@ -43,7 +43,7 @@ nav.navbar.navbar-expand-lg.navbar-light
 .contentHolder
 {
   /* height: 100%; */
-  background-image: url("../public/Frame.png");
+  background-image: url("/Frame.png");
   background-position: right;
   background-repeat: no-repeat;
 background-size: auto;
@@ -216,7 +216,7 @@ border: 1px solid rgba(169, 168, 168, 0.2);
 .singleProdcutContainer
 {
   height: 100%;
-    background-image: url("../public/Frame.png");
+    background-image: url("/Frame.png");
     background-position: right;
     background-repeat: no-repeat;
     background-size: auto;

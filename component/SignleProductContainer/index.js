@@ -2,6 +2,7 @@ import { Box, Tab, Tabs, Typography } from "@mui/material";
 import React, { Component, useState } from "react";
 import { Container, Image } from "react-bootstrap";
 import DeviceTable from "../TableForHomepage/table";
+// import Test from "../../public/Frame.png"
 import TabPanelBody from "../TabPanelBody";
 const HeaderOfSingleProduct = () => {
   return (

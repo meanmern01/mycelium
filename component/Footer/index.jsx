@@ -1,5 +1,6 @@
 import React from "react";
-import Image from "next/image";
+// import Image from "next/image";
+import { Container, Image } from "react-bootstrap";
 const HomepageFooter = () => {
   return (
     <React.Fragment>

@@ -1,4 +1,5 @@
-import Image from "next/image";
+// import Image from "next/image";
+import { Container, Image } from "react-bootstrap";
 import React, { Component } from "react";
 const TabPanelBody = ({ companyName }) => {
   return (
@@ -132,7 +133,7 @@ const TabPanelBody = ({ companyName }) => {
             </div>
             <div className="subBottomInformation">
               <h5>vs EXIOBASE UK</h5>
-              <p style={{color:'#6EB575'}}>-30% CO<sub>2</sub>e</p>
+              <p style={{ color: '#6EB575' }}>-30% CO<sub>2</sub>e</p>
             </div>
           </div>
         </div>
