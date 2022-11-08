@@ -1,0 +1,591 @@
+@import url('/font-awesome-5.8.1/css/font-awesome.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;600&display=swap');
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Inter !important;
+    background-color: #FEFFF7 !important;
+    height: 100% !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+div#__next {
+  height: 100%;
+}
+.mainHolder
+{
+  height: 100%;
+}
+/* -------------------Navbar---------------------------- */
+.signInBtnNavbar
+{
+  border: 1px solid #896EB5;
+  border-radius: 83px;
+  padding: 8px 35px !important;
+  background-color: #896EB5;
+  color: #fff !important;
+}
+nav.navbar.navbar-expand-lg.navbar-light
+{
+  padding: 3% 5% !important;
+  background-color: #FEFFF7 ;
+}
+
+
+/* -------------------Navbar---------------------------- */
+
+/* ------------------HomepageBody Component------------------- */
+
+.contentHolder
+{
+  /* height: 100%; */
+  background-image: url("../public/Frame.png");
+  background-position: right;
+  background-repeat: no-repeat;
+background-size: auto;
+}
+.contentHolder .Header
+{
+  width: 80%;
+    margin: 0px auto;
+}
+#headerComponentHolder
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+input.me-2.form-control {
+      border-radius: 7px;
+      border-color: #F0F2E7;
+        background: #F0F2E7;
+        width: 80%;
+}
+.searchResultHolder
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin: 20px 0px;
+}
+.tableBody
+{
+  margin: 25px auto;
+  width: 80%;
+}
+.tableBody .container
+{
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* ------------------HomepageBody Component------------------- */
+/* ----------------_Table-component-------------- */
+#deviceTable
+{
+  width: 80% !important;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+
+#deviceTable thead tr th {
+  text-align: center;
+  padding: 20px  !important;
+}
+#deviceTable tbody tr td {
+  text-align: center;
+  padding: 15px  !important; 
+}
+
+.tableCaption
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.tableCaption p
+{
+  margin-right: 10px;
+}
+.menuLink
+{
+  text-decoration: none;
+  color: black;
+}
+.menuLink:hover
+{
+  text-decoration: none;
+  color: black;
+}
+/* ----------------_Table-component-------------- */
+/* -------------------Footer------------------ */
+.mainHolderFooter
+{
+  background-color: #333333;
+  color: #fff;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.mainHolderFooter  .SecondCol
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.mainHolderFooter .firstCol 
+{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.mainHolderFooter .firstCol .footerInfoRowFirst
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.mainHolderFooter .firstCol .footerInfoRowFirst .firstSubCol
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.mainHolderFooter .firstCol .footerInfoRowFirst p
+{
+  font-size: 13px;
+    line-height: 13.31px;
+    margin:  0px 0px 10px;
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+.mainHolderFooter .firstCol .footerInfoRowFirst .secondSubCol
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.mainHolderFooter .firstCol .footerInfoRowFirst .secondSubCol p {
+  font-size: 13px;
+    line-height: 13.31px;
+    margin: 0px;
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+.mainHolderFooter .firstCol .footerInfoRowSecond
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px auto;
+}
+.mainHolderFooter .firstCol .footerInfoRowSecond p
+{
+  font-size: 11px;
+  line-height: 13.31px;
+  margin: 0px;
+  color: #FFFFFF;
+}
+
+/* -----------------Single-page---------------------------- */
+.MuiBox-root.css-19kzrtu
+{
+  padding: 0px;
+}
+.tabPanelLeftPart
+{
+  
+border: 1px solid rgba(169, 168, 168, 0.2);
+  padding: 24px;
+  width: -webkit-fill-available;
+}
+.tabPanelRightPart
+{
+
+  padding: 24px;
+  width: -webkit-fill-available;
+}
+.singleProdcutContainer
+{
+  height: 100%;
+    background-image: url("../public/Frame.png");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+.singleHeaderContainer
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+}
+.second_singleHeaderContainer
+{
+  margin-left: 1.5%;
+}
+.second_singleHeaderContainer .rankedContianer
+{
+  max-width: 170px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+ align-items: center;
+}
+.companyNameHolder h1
+{
+  font-family: inter;
+  font-weight: 600;
+  font-size: 36px;
+margin-bottom: 0;
+}
+.companyDescription p 
+{
+  margin-bottom: 0;
+  font-family: inter;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21.78px;
+}
+.tabPanelSingleDevice
+{
+  margin-top: 1.5%;
+}
+.tabPanelBodyMain
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
+.companyDetailsHolder
+{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 80%;
+}
+.informationHolder h4
+{
+  font-family: inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15.73px;
+ opacity: 0.5;
+ color: #323232;
+ margin-bottom: 0px;
+}
+.informationHolder p
+{
+  font-family: inter;
+  max-width: 150px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18.15px;
+}
+.subInformationHolder
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+.subInformationHolder p
+{
+ color: #6EB575;
+ margin-bottom: 0px;
+ font-size: 36px;
+ font-weight: 600;
+ margin-left: 5%;
+}
+
+.subInformationHolder2 p
+{
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 36px;
+line-height: 44px;
+letter-spacing: -0.04em;
+color: #6EB575;
+margin: 10px 0;
+}
+
+.subInformationHolder3
+{
+  margin: 30px 0 ;
+}
+
+.subInformationHolder4
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+.subInformationHolder4 span
+{
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 13px;
+line-height: 16px;
+letter-spacing: -0.04em;
+color: #323232;
+}
+
+.subInformationHolder4 p
+{
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 36px;
+line-height: 44px;
+letter-spacing: -0.04em;
+color: #6EB575;
+}
+
+.pdfHolder
+{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid rgba(169, 168, 168, 0.2);
+  border-radius: 6px;
+  width: 230px;
+height: 72px;
+}
+
+.pdfHolder p
+{
+  margin-top: 15px;
+}
+
+.documentSection
+{
+  margin-top: 30px;
+}
+
+.scopeInformationHolder
+{
+  display: flex;
+  justify-content: space-between;
+  max-width: 80%;
+}
+/* .scopeInformationHolder div{
+  margin-right: 30px;
+} */
+
+.subScopeInformation h5
+{
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 16px;
+color: #323232;
+opacity: 0.5;
+}
+
+.subScopeInformation h6
+{
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 12px;
+letter-spacing: -0.04em;
+color: #A9A8A8;
+}
+
+.subScopeInformation p
+{
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 18px;
+color: #323232;
+}
+
+.bottomInformationHandler 
+{
+  display: flex;
+}
+.subBottomInformation{
+  margin-right: 20px;
+}
+
+.subBottomInformation h5
+{
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 16px;
+color: #212121;
+opacity: 0.5;
+}
+
+.subBottomInformation p
+{
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 18px;
+letter-spacing: -0.04em;
+
+color: #212121;
+}
+
+.tabPanelBodyMain h1
+{
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+line-height: 22px;
+color: #323232;
+}
+
+.tabPanelBodyMain h2
+{
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 19px;
+color: #323232;
+}
+
+/* -----------------Single-page---------------------------- */
+
+/* -------------------Footer------------------ */
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
+
+.footerInfoRowSecond {
+  display: none;
+}
+.img_heading {
+  display: inline-flex;
+}
+.signInBtnNavbar_mobile {
+  display: none !important;
+}
+
+@media (max-width: 768px){
+  .tabPanelSingleDevice .container > div {
+    width: 100% !important;
+  }
+}
+@media (max-width: 767px){
+  .companyDetailsHolder {
+    max-width: 100%;
+  }
+  .SecondCol {
+    width: 140px;
+  }
+  .SecondCol img {
+    width: 100%;
+    height: auto;
+  }
+  .mainHolderFooter {
+    flex-wrap: wrap;
+    padding: 30px 15px;
+  }
+  .footerInfoRowSecond {
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  .mainHolderFooter .firstCol .footerInfoRowFirst {
+    flex-direction: column;
+  }
+  .contentHolder .Header , .tableBody {
+    width: 95%;
+  }
+  .tableBody .container {
+    padding: 0 !important;
+  }
+  .tableBody .container {
+    overflow-x: auto;
+  }
+  #headerComponentHolder > h1 , #headerComponentHolder > p {
+    display: none;
+  }
+  #headerComponentHolder form {
+    order: 2;
+  }
+  #headerComponentHolder form input , .searchResultHolder {
+    width: 100%;
+    margin: 0;
+  }
+  .searchResultHolder {
+    flex-direction: column; 
+  }
+  #deviceTable thead tr th {
+    padding: 10px !important;
+  }
+  .tableCaption {
+    display: none;
+  }
+}
+@media (max-width: 576px){
+  .tabPanelBodyMain {
+    margin-bottom: 20px;
+    flex-direction: column-reverse;
+  }
+  .singleProdcutContainer {
+    height: auto;
+  }
+  .footerInfoRowSecond {
+    display: block;
+  }  
+  .mobile_hide , .documentSection {
+    display: none !important;
+  }
+  a.navbar-brand {
+    display: inline;
+    width: 140px;
+  }
+  a.navbar-brand img {
+    width: 100%;
+    height: auto;
+  }
+  .signInBtnNavbar_mobile {
+    display: block !important; 
+  }
+  .navbar-nav .signInBtnNavbar {
+    display: none !important;
+  }
+  .SecondCol {
+    width: 140px;
+  }
+  #deviceTable tbody tr td {
+    display: table-cell !important;
+    background: #fff;
+  }
+}
+@media (max-width: 375px){
+  .SecondCol {
+    width: 100px;
+  }
+}
