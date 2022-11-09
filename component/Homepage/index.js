@@ -4,19 +4,26 @@ import DeviceTable from "../TableForHomepage/table";
 import axios from "axios";
 
 const HomePageBody = () => {
-  // const [search, setSearch] = useState('');
-  const [pagination, setPagination] = useState([5, 10, 15, 20, 25]);
+  const [searchCompany, setSearchCompany] = useState("");
+  const [pagination, setPagination] = useState([]);
   const [data, setData] = useState([]);
+  console.log(data.length, "Length");
 
   const search = async (e) => {
-    // setSearch(e.target.value)
-    await axios.get(`http://localhost:8000/searchData/${e.target.value}`).then((td) => {
-      // console.log(td);
-      setData(td.data.Data)
-    }).catch((error) => {
-      console.log(error);
-    })
-  }
+    const paginationArray = [];
+    setSearchCompany(e.target.value);
+    await axios
+      .get(`http://54.174.180.252:8000/searchData/${e.target.value}`)
+      .then((td) => {
+        // console.log(td);
+        setData(td.data.Data);
+        data.length >= 5 && paginationArray.push(Math.ceil(data.length / 5));
+        setPagination(paginationArray);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <>
       <div className="contentHolder">
@@ -39,11 +46,11 @@ const HomePageBody = () => {
               <p>
                 Showing{" "}
                 <span style={{ color: "#896EB5", fontWeight: 600 }}>
-                  {search?.length}
+                  {data?.length}
                 </span>{" "}
                 Mycelium results for{" "}
                 <span style={{ color: "#896EB5", fontWeight: 600 }}>
-                  ‘{search}’
+                  ‘{searchCompany}’
                 </span>{" "}
               </p>
               <p

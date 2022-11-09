@@ -42,7 +42,7 @@ nav.navbar.navbar-expand-lg.navbar-light
 
 .contentHolder
 {
-  /* height: 100%; */
+  min-height: calc(100vh - 370px);
   background-image: url("/Frame.png");
   background-position: right;
   background-repeat: no-repeat;
@@ -101,6 +101,7 @@ input.me-2.form-control {
 }
 #deviceTable tbody tr td {
   text-align: center;
+  vertical-align: middle;
   padding: 15px  !important; 
 }
 
@@ -487,6 +488,8 @@ color: #323232;
 }
 .img_heading {
   display: inline-flex;
+  flex-direction: row;
+  align-items: center;
 }
 .signInBtnNavbar_mobile {
   display: none !important;
