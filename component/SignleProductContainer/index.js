@@ -4,7 +4,11 @@ import { Container, Image } from "react-bootstrap";
 import DeviceTable from "../TableForHomepage/table";
 // import Test from "../../public/Frame.png"
 import TabPanelBody from "../TabPanelBody";
+
+
+const data = JSON.parse(localStorage.getItem("Item"))
 const HeaderOfSingleProduct = () => {
+  console.log(data, 'asdasdadasdasdsa');
   return (
     <>
       <Container>

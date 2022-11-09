@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import DeviceTable from "../TableForHomepage/table";
+import axios from "axios";
 
 const HomePageBody = () => {
-  const [search, setSearch] = useState();
+  // const [search, setSearch] = useState('');
   const [pagination, setPagination] = useState([5, 10, 15, 20, 25]);
+  const [data, setData] = useState([]);
+
+  const search = async (e) => {
+    // setSearch(e.target.value)
+    await axios.get(`http://localhost:8000/searchData/${e.target.value}`).then((td) => {
+      // console.log(td);
+      setData(td.data.Data)
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
   return (
     <>
       <div className="contentHolder">
@@ -20,9 +32,7 @@ const HomePageBody = () => {
                 placeholder="&#xF002; search users"
                 className="me-2"
                 aria-label="Search"
-                onChange={(e) => {
-                  setSearch(e.target.value);
-                }}
+                onChange={search}
               />
             </Form>
             <div className="searchResultHolder">
@@ -55,7 +65,7 @@ const HomePageBody = () => {
         </div>
         <div className="tableBody">
           <Container>
-            <DeviceTable />
+            <DeviceTable value={data} />
           </Container>
           <Container>
             <div className="tableCaption">

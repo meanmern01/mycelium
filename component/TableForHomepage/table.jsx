@@ -1,10 +1,12 @@
 // import Image from "next/image";
-import { Container, Image } from "react-bootstrap";
+import { Container, Image, NavItem } from "react-bootstrap";
 import Link from "next/link";
 import React, { useState } from "react";
 import { Table } from "react-bootstrap";
-const DeviceTable = () => {
+
+const DeviceTable = (props) => {
   const [value, setValue] = useState(-30);
+  // const [tabdata,setTabdata] = useState({})
 
   return (
     <Table id="deviceTable" variant="light" hover>
@@ -19,47 +21,53 @@ const DeviceTable = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td style={{ color: "#896EB5" }}>1</td>
+        {
+          props.value.map((item, i) =>
 
-          <td>
-            <div className="img_heading">
-              <Image src="/grizzle square logo 1.png" width={22} height={22} />
-              <p
+            <tr>
+              <td style={{ color: "#896EB5" }}>{item.rank}</td>
+
+              <td>
+                <div className="img_heading">
+                  <Image src={item.company_logo} width={30} height={30} />
+                  <p
+                    style={{
+                      color: "black",
+                      marginBottom: "0px",
+                      fontWeight: "bold",
+                      textDecoration: null,
+                    }}
+                    onClick={() => localStorage.setItem("Item", JSON.stringify(item))}
+                  >
+                    <Link className="menuLink" href="singleDevice/Mark">
+                      {item.company_name}
+                    </Link>
+                  </p>
+                </div>
+              </td>
+
+              <td>{item.kg_co2e}</td>
+              <td><Image src={item.company_logo} width={150} height={50} /></td>
+              <td
                 style={{
-                  color: "black",
-                  marginBottom: "0px",
-                  fontWeight: "bold",
-                  textDecoration: null,
+                  color: value < -10 ? "#6EB575" : "#C0D372",
+                  fontWeight: 600,
                 }}
               >
-                <Link className="menuLink" href="singleDevice/Mark">
-                  Mark
-                </Link>
-              </p>
-            </div>
-          </td>
-
-          <td>0.0688</td>
-          <td>unknown</td>
-          <td
-            style={{
-              color: value < -10 ? "#6EB575" : "#C0D372",
-              fontWeight: 600,
-            }}
-          >
-            -30% CO2e
-          </td>
-          <td
-            style={{
-              color: value < -10 ? "#6EB575" : "#C0D372",
-              fontWeight: 600,
-            }}
-          >
-            75%
-          </td>
-        </tr>
-        <tr>
+                {item.exiobase}% CO2e
+              </td>
+              <td
+                style={{
+                  color: value < -10 ? "#6EB575" : "#C0D372",
+                  fontWeight: 600,
+                }}
+              >
+                {item.confidence_score}%
+              </td>
+            </tr>
+          )
+        }
+        {/* <tr>
           <td style={{ color: " #896EB5" }}>2</td>
           <td>
             <div className="img_heading">
@@ -123,7 +131,7 @@ const DeviceTable = () => {
           <td>unknown</td>
           <td>-30% CO2e</td>
           <td>75%</td>
-        </tr>
+        </tr> */}
       </tbody>
     </Table>
   );
