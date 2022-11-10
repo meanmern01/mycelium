@@ -1,7 +1,8 @@
 // import Image from "next/image";
 import { Container, Image } from "react-bootstrap";
 import React, { Component } from "react";
-const TabPanelBody = ({ companyName }) => {
+const TabPanelBody = (props, { companyName }) => {
+  console.log(props.data);
   return (
     <div className="tabPanelBodyMain">
       <div className="tabPanelLeftPart">
@@ -20,29 +21,30 @@ const TabPanelBody = ({ companyName }) => {
           <div>
             <div className="informationHolder">
               <h4>Website URL</h4>
-              <p style={{ color: "#896EB5" }}>www.grizzle.london</p>
+              {/* <p style={{ color: "#896EB5" }}>www.grizzle.london</p> */}
+              <p style={{ color: "#896EB5", lineBreak: "anywhere" }}>{props.data.website_url}</p>
             </div>
             <div className="informationHolder">
               <h4>Country</h4>
-              <p>United Kingdom</p>
+              <p>{props.data.country}</p>
             </div>
             <div className="informationHolder">
               <h4>Location</h4>
-              <p>6 Hoxton Square London, N1 6NU</p>
+              <p>{props.data.location}</p>
             </div>
           </div>
           <div>
             <div className="informationHolder">
               <h4>Name</h4>
-              <p>Tom Carpenter</p>
+              <p>{props.data.company_name}</p>
             </div>
             <div className="informationHolder">
               <h4>Contact</h4>
-              <p>+44 1516 561 651</p>
+              <p>{props.data.mobile_number}</p>
             </div>
             <div className="informationHolder">
               <h4>Email</h4>
-              <p>info@grizzle.london</p>
+              <p>{props.data.email}</p>
             </div>
           </div>
         </div>
@@ -71,13 +73,13 @@ const TabPanelBody = ({ companyName }) => {
                   width={73.67}
                   height={62.73}
                 />
-                <p>7.7</p>
+                <p>{props.data.mycelinum_score}</p>
               </div>
             </div>
             <div className="informationHolder">
               <h4>Confidence Score</h4>
               <div className="subInformationHolder2">
-                <p>75%</p>
+                <p>{props.data.confidence_score}%</p>
               </div>
             </div>
           </div>
@@ -86,7 +88,7 @@ const TabPanelBody = ({ companyName }) => {
               <h4>Carbon accountant</h4>
               <div className="subInformationHolder3">
                 <Image
-                  src="/bezero.png"
+                  src={props.data.carbon_accountant}
                   width={117}
                   height={22}
                 />
@@ -95,7 +97,7 @@ const TabPanelBody = ({ companyName }) => {
             <div className="informationHolder">
               <h4>vs EXIOBASE</h4>
               <div className="subInformationHolder4">
-                <p>-30%</p>
+                <p>-{props.data.exiobase}%</p>
                 <span>co<sub>2</sub>e </span>
               </div>
             </div>
@@ -108,28 +110,28 @@ const TabPanelBody = ({ companyName }) => {
             <div className="subScopeInformation">
               <h5>Scope 1</h5>
               <h6>(tCO<sub>2</sub>e) </h6>
-              <p>1.0</p>
+              <p>{props.data.scope_1}</p>
             </div>
             <div className="subScopeInformation">
               <h5>Scope 2</h5>
               <h6>(tCO<sub>2</sub>e) </h6>
-              <p>0.3</p>
+              <p>{props.data.scope_2}</p>
             </div>
             <div className="subScopeInformation">
               <h5>Scope 3</h5>
               <h6>(tCO<sub>2</sub>e) </h6>
-              <p>24.7</p>
+              <p>{props.data.scope_3}</p>
             </div>
             <div className="subScopeInformation">
               <h5>Total</h5>
               <h6>(tCO<sub>2</sub>e) </h6>
-              <p>26</p>
+              <p>{props.data.scope_1 + props.data.scope_2 + props.data.scope_3}</p>
             </div>
           </div>
           <div className="bottomInformationHandler">
             <div className="subBottomInformation">
               <h5>kg CO<sub>2</sub>e / £</h5>
-              <p>0.0688</p>
+              <p>{props.data.kg_co2e}</p>
             </div>
             <div className="subBottomInformation">
               <h5>vs EXIOBASE UK</h5>

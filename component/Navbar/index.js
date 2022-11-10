@@ -6,12 +6,15 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 const NavigationBar = () => {
   return (
     <Navbar collapseOnSelect expand="lg">
-      <Navbar.Brand href="#home">
-        <Image src="/Group 55.png" width={180.82} height={32.79} />
+      <Navbar.Brand >
+        <Link href="/">
+          <Image src="/Group 55.png" width={180.82} height={32.79} />
+        </Link>
       </Navbar.Brand>
       <Nav.Link href="#deets" className="signInBtnNavbar signInBtnNavbar_mobile">
         {" "}

@@ -1,21 +1,21 @@
 import { Box, Tab, Tabs, Typography } from "@mui/material";
-import React, { Component, useState } from "react";
+import { useRouter } from "next/router";
+import React, { Component, useEffect, useState } from "react";
 import { Container, Image } from "react-bootstrap";
 import DeviceTable from "../TableForHomepage/table";
 // import Test from "../../public/Frame.png"
 import TabPanelBody from "../TabPanelBody";
+import axios from "axios";
 
+const HeaderOfSingleProduct = (props) => {
 
-const data = JSON.parse(localStorage.getItem("Item"))
-const HeaderOfSingleProduct = () => {
-  console.log(data, 'asdasdadasdasdsa');
   return (
     <>
       <Container>
         <div className="singleHeaderContainer">
           <div className="first_singleHeaderContainer">
             {" "}
-            <Image src="/grizzle square logo 2.png" width={82} height={82} />
+            <Image src={props.value.company_logo} width={82} height={82} />
           </div>
           <div className="second_singleHeaderContainer">
             <div className="rankedContianer">
@@ -30,7 +30,7 @@ const HeaderOfSingleProduct = () => {
                 Sector
               </p>
               <p style={{ fontSize: 14, fontWeight: 400, marginBottom: 0 }}>
-                Animation
+                {props.value.sector}
               </p>
               <p
                 style={{
@@ -44,17 +44,16 @@ const HeaderOfSingleProduct = () => {
                 <span
                   style={{ fontSize: 14, fontWeight: 400, marginBottom: 0 }}
                 >
-                  1
+                  {props.value.rank}
                 </span>
               </p>
             </div>
             <div className="companyNameHolder">
-              <h1>Grizzle Ltd</h1>
+              <h1>{props.value.company_name}</h1>
             </div>
             <div className="companyDescription">
               <p>
-                We’re an independent animation and motion design studio based in
-                London & Sheffield
+                {props.value.company_description}
               </p>
             </div>
           </div>
@@ -64,7 +63,7 @@ const HeaderOfSingleProduct = () => {
   );
 };
 
-const TabPanelSingleDevice = () => {
+const TabPanelSingleDevice = (prop) => {
   const [value, setValue] = useState(0);
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -118,10 +117,10 @@ const TabPanelSingleDevice = () => {
             </Tabs>
           </Box>
           <TabPanel value={value} index={0}>
-            <TabPanelBody companyName={"2021"} />
+            <TabPanelBody data={prop.value} companyName={"2021"} />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            <TabPanelBody companyName={"2022"} />
+            <TabPanelBody data={prop.value} companyName={"2022"} />
           </TabPanel>
         </Box>
       </Container>
@@ -129,10 +128,22 @@ const TabPanelSingleDevice = () => {
   );
 };
 const SingleProdcutContainer = () => {
+  const router = useRouter();
+  const [data, setData] = useState({})
+
+  const details = async () => {
+    const detail = await axios.get(`http://54.174.180.252:8000/searchDataById/${router.query.id}`)
+    detail.data.Data.map((item, i) => setData(item))
+  }
+
+  useEffect(() => {
+    details();
+  }, [])
+
   return (
     <div className="singleProdcutContainer">
-      <HeaderOfSingleProduct />
-      <TabPanelSingleDevice />
+      <HeaderOfSingleProduct value={data} />
+      <TabPanelSingleDevice value={data} />
     </div>
   );
 };

@@ -16,14 +16,20 @@ const HomePageBody = () => {
       .get(`http://54.174.180.252:8000/searchData/${e.target.value}`)
       .then((td) => {
         // console.log(td);
+        // if (td.data.Data.count > 5) {
+        //   console.log('asdadada');
+        // }
+        // td.data.Data.filter(item, i => )
         setData(td.data.Data);
         data.length >= 5 && paginationArray.push(Math.ceil(data.length / 5));
+        // console.log(paginationArray, 'qqqqqqqqqqqqq');
         setPagination(paginationArray);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
   return (
     <>
       <div className="contentHolder">
@@ -76,6 +82,7 @@ const HomePageBody = () => {
           </Container>
           <Container>
             <div className="tableCaption">
+
               <p>
                 Results per page :{" "}
                 {pagination.map((data) => {
