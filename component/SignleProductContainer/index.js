@@ -8,7 +8,6 @@ import TabPanelBody from "../TabPanelBody";
 import axios from "axios";
 
 const HeaderOfSingleProduct = (props) => {
-
   return (
     <>
       <Container>
@@ -52,9 +51,7 @@ const HeaderOfSingleProduct = (props) => {
               <h1>{props.value.company_name}</h1>
             </div>
             <div className="companyDescription">
-              <p>
-                {props.value.company_description}
-              </p>
+              <p>{props.value.company_description}</p>
             </div>
           </div>
         </div>
@@ -129,16 +126,23 @@ const TabPanelSingleDevice = (prop) => {
 };
 const SingleProdcutContainer = () => {
   const router = useRouter();
-  const [data, setData] = useState({})
-
-  const details = async () => {
-    const detail = await axios.get(`http://54.174.180.252:8000/searchDataById/${router.query.id}`)
-    detail.data.Data.map((item, i) => setData(item))
-  }
+  const [data, setData] = useState({});
 
   useEffect(() => {
-    details();
-  }, [])
+    localStorage.setItem("queryId", router.query.id);
+    setTimeout(() => {
+      details();
+    }, 1000);
+  }, []);
+  const details = async () => {
+    console.log(router.query.id);
+    const detail = await axios.get(
+      `http://54.174.180.252:8000/searchDataById/${localStorage.getItem(
+        "queryId"
+      )}`
+    );
+    detail.data.Data.map((item, i) => setData(item));
+  };
 
   return (
     <div className="singleProdcutContainer">
