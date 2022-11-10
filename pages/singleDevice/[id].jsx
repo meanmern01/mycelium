@@ -10,7 +10,7 @@ const SingleProduct = () => {
   return (
     <div style={{ height: "-webkit-fill-available" }}>
       <NavigationBar />
-      <SingleProdcutContainer />
+      <SingleProdcutContainer queryId={router.query.id} />
       <HomepageFooter />
     </div>
   );

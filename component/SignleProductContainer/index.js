@@ -124,8 +124,9 @@ const TabPanelSingleDevice = (prop) => {
     </div>
   );
 };
-const SingleProdcutContainer = () => {
+const SingleProdcutContainer = ({ queryId }) => {
   const router = useRouter();
+  console.log(queryId, "Hey");
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -137,9 +138,7 @@ const SingleProdcutContainer = () => {
   const details = async () => {
     console.log(localStorage.getItem("queryId"));
     const detail = await axios.get(
-      `http://54.174.180.252:8000/searchDataById/${localStorage.getItem(
-        "queryId"
-      )}`
+      `http://54.174.180.252:8000/searchDataById/${queryId}}`
     );
     detail.data.Data.map((item, i) => setData(item));
   };
