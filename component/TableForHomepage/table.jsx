@@ -38,9 +38,6 @@ const DeviceTable = (props) => {
                     fontWeight: "bold",
                     textDecoration: null,
                   }}
-                  onClick={() =>
-                    localStorage.setItem("Item", JSON.stringify(item))
-                  }
                 >
                   {console.log(item.id, "Hello")}
                   <Link className="menuLink" href={`singleDevice/${item.id}`}>

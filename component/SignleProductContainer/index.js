@@ -5,10 +5,7 @@ import DeviceTable from "../TableForHomepage/table";
 // import Test from "../../public/Frame.png"
 import TabPanelBody from "../TabPanelBody";
 
-
-const data = JSON.parse(localStorage.getItem("Item"))
 const HeaderOfSingleProduct = () => {
-  console.log(data, 'asdasdadasdasdsa');
   return (
     <>
       <Container>
@@ -104,7 +101,7 @@ const TabPanelSingleDevice = () => {
             width: "80%",
             // border: "1px solid white",
             backgroundColor: "white",
-            boxShadow: "0px 4px 14px rgba(0, 0, 0, 0.15)"
+            boxShadow: "0px 4px 14px rgba(0, 0, 0, 0.15)",
           }}
         >
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
