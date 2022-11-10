@@ -135,7 +135,7 @@ const SingleProdcutContainer = () => {
     }, 1000);
   }, []);
   const details = async () => {
-    console.log(router.query.id);
+    console.log(localStorage.getItem("queryId"));
     const detail = await axios.get(
       `http://54.174.180.252:8000/searchDataById/${localStorage.getItem(
         "queryId"
