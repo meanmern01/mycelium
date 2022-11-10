@@ -2,23 +2,32 @@ import React, { useEffect, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import DeviceTable from "../TableForHomepage/table";
 import axios from "axios";
-
+import { Pagination } from "react-bootstrap";
 const HomePageBody = () => {
   const [searchCompany, setSearchCompany] = useState("");
   const [pagination, setPagination] = useState([]);
   const [data, setData] = useState([]);
-  console.log(data.length, "Length");
 
   const search = async (e) => {
     const paginationArray = [];
+    let items = [];
     setSearchCompany(e.target.value);
+    // console.log(e.target.value);
     await axios
       .get(`http://54.174.180.252:8000/searchData/${e.target.value}`)
       .then((td) => {
+        console.log(td.data.Data);
         setData(td.data.Data);
-        data.length >= 5 && paginationArray.push(Math.ceil(data.length / 5));
-        // console.log(paginationArray, 'qqqqqqqqqqqqq');
-        setPagination(paginationArray);
+        for (let number = 0; number <= td.data.Data.length; number = number + 5) {
+          items.push(
+            <Pagination.Item key={number} >
+              {number}
+            </Pagination.Item>,
+          );
+        }
+        // data.length >= 5 && paginationArray.push(Math.ceil(data.length / 5));
+        // console.log(items, 'qqqqqqqqqqqqq');
+        setPagination(items);
       })
       .catch((error) => {
         console.log(error);
@@ -78,9 +87,10 @@ const HomePageBody = () => {
           <Container>
             <div className="tableCaption">
 
-              <p>
-                Results per page :{" "}
-                {pagination.map((data) => {
+              <p >
+                Results per page :
+                <Pagination >{pagination}</Pagination>
+                {/* {pagination.map((data) => {
                   return (
                     <span
                       onClick={() => {
@@ -96,7 +106,7 @@ const HomePageBody = () => {
                       {data}
                     </span>
                   );
-                })}{" "}
+                })}{" "} */}
               </p>
               <p style={{ color: "#896EB5" }}>
                 Showing results in:{" "}
