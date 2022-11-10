@@ -103,7 +103,7 @@ const TabPanelSingleDevice = (prop) => {
             width: "80%",
             // border: "1px solid white",
             backgroundColor: "white",
-            boxShadow: "0px 4px 14px rgba(0, 0, 0, 0.15)"
+            boxShadow: "0px 4px 14px rgba(0, 0, 0, 0.15)",
           }}
         >
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
