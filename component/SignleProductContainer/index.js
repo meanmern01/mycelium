@@ -14,7 +14,8 @@ const HeaderOfSingleProduct = (props) => {
         <div className="singleHeaderContainer">
           <div className="first_singleHeaderContainer">
             {" "}
-            <Image src={props.value.company_logo} width={82} height={82} />
+            {/* <Image src={props.value.company_logo} width={82} height={82} /> */}
+            <Image src='../grizzle square logo 1.png' width={82} height={82} />
           </div>
           <div className="second_singleHeaderContainer">
             <div className="rankedContianer">
@@ -29,7 +30,7 @@ const HeaderOfSingleProduct = (props) => {
                 Sector
               </p>
               <p style={{ fontSize: 14, fontWeight: 400, marginBottom: 0 }}>
-                {props.value.sector}
+                {props.value.Sectors}
               </p>
               <p
                 style={{
@@ -43,12 +44,12 @@ const HeaderOfSingleProduct = (props) => {
                 <span
                   style={{ fontSize: 14, fontWeight: 400, marginBottom: 0 }}
                 >
-                  {props.value.rank}
+                  {props.value.id}
                 </span>
               </p>
             </div>
             <div className="companyNameHolder">
-              <h1>{props.value.company_name}</h1>
+              <h1>{props.value.organization_name}</h1>
             </div>
             <div className="companyDescription">
               <p>{props.value.company_description}</p>

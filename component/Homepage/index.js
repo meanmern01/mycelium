@@ -20,6 +20,8 @@ const HomePageBody = () => {
       .then((td) => {
         console.log(td.data.Data);
         setData(td.data.Data);
+        // setShowdata(td.data.Data)
+        showData(td.data.Data.length)
         for (let number = 5; number <= td.data.Data.length; number = number + 5) { items.push(number); }
         setPagination(items);
       })

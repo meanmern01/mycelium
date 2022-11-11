@@ -25,12 +25,13 @@ const DeviceTable = (props) => {
       <tbody>
         {props.value.map((item, i) => (
           <tr>
-            <td style={{ color: "#896EB5" }}>{item.rank}</td>
+            <td style={{ color: "#896EB5" }}>{item.id}</td>
 
             <td>
               <div className="img_heading">
                 <Image
-                  src={item.company_logo}
+                  // src={item.company_logo}
+                  src="../grizzle square logo 1.png"
                   style={{ width: 40, height: 40, marginRight: "10px" }}
                 />
                 <p
@@ -42,16 +43,18 @@ const DeviceTable = (props) => {
                   }}
                 >
                   <Link className="menuLink" href={`singleDevice/${item.id}`}>
-                    {item.company_name}
+                    {item.organization_name}
                   </Link>
                 </p>
               </div>
             </td>
 
-            <td>{item.kg_co2e}</td>
+            {/* <td>{item.kg_co2e}</td> */}
+            <td>5.2</td>
             <td>
               <Image
-                src={item.company_logo}
+                // src={item.company_logo}
+                src="../grizzle square logo 2.png"
                 style={{ width: 150, height: 50 }}
               />
             </td>
@@ -61,7 +64,8 @@ const DeviceTable = (props) => {
                 fontWeight: 600,
               }}
             >
-              {item.exiobase}% CO2e
+              {/* {item.exiobase}% CO2e */}
+              30% CO2e
             </td>
             <td
               style={{
@@ -69,7 +73,8 @@ const DeviceTable = (props) => {
                 fontWeight: 600,
               }}
             >
-              {item.confidence_score}%
+              {/* {item.confidence_score}% */}
+              5%
             </td>
           </tr>
         ))}
