@@ -8,7 +8,7 @@ import { Table } from "react-bootstrap";
 const DeviceTable = (props) => {
   const [value, setValue] = useState(-30);
   // const [tabdata,setTabdata] = useState({})
-
+  console.log(props.value);
   return (
 
     <Table id="deviceTable" variant="light" hover>

@@ -7,13 +7,13 @@ const TabPanelBody = (props, { companyName }) => {
     <div className="tabPanelBodyMain">
       <div className="tabPanelLeftPart">
         <h1
-        // style={{
-        //   fontFamily: "18px",
-        //   fontFamily: "inter",
-        //   fontWeight: 300,
-        //   lineHeight: "22px",
-        //   marginBottom: "5%",
-        // }}
+          style={{
+            fontFamily: "18px",
+            fontFamily: "inter",
+            fontWeight: 300,
+            lineHeight: "22px",
+            marginBottom: "5%",
+          }}
         >
           Company Details : {companyName}
         </h1>

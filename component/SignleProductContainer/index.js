@@ -124,29 +124,31 @@ const TabPanelSingleDevice = (prop) => {
     </div>
   );
 };
-const SingleProdcutContainer = ({ queryId }) => {
-  const router = useRouter();
-  console.log(queryId, "Hey");
-  const [data, setData] = useState({});
+const SingleProdcutContainer = ({ value }) => {
+  console.log(value, 'aaaaaaaaaaaaaa');
+  // const router = useRouter();
+  // console.log(queryId, "Hey");
+  // const [data, setData] = useState({});
 
-  useEffect(() => {
-    localStorage.setItem("queryId", router.query.id);
-    setTimeout(() => {
-      details();
-    }, 1000);
-  }, []);
-  const details = async () => {
-    console.log(localStorage.getItem("queryId"));
-    const detail = await axios.get(
-      `http://54.174.180.252:8000/searchDataById/${queryId}}`
-    );
-    detail.data.Data.map((item, i) => setData(item));
-  };
+  // useEffect(() => {
+  //   localStorage.setItem("queryId", router.query.id);
+  //   setTimeout(() => {
+  //     details();
+  //   }, 1000);
+  // }, []);
+
+  // const details = async () => {
+  //   console.log(localStorage.getItem("queryId"));
+  //   const detail = await axios.get(
+  //     `http://54.174.180.252:8000/searchDataById/${queryId}}`
+  //   );
+  //   detail.data.Data.map((item, i) => setData(item));
+  // };
 
   return (
     <div className="singleProdcutContainer">
-      <HeaderOfSingleProduct value={data} />
-      <TabPanelSingleDevice value={data} />
+      <HeaderOfSingleProduct value={value} />
+      <TabPanelSingleDevice value={value} />
     </div>
   );
 };
