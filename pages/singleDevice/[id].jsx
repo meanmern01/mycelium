@@ -20,15 +20,16 @@ const SingleProduct = () => {
   const details = async () => {
     // console.log(localStorage.getItem("queryId"));
     const detail = await axios.get(
-      `http://54.174.180.252:8000/searchDataById/${router.query.id}}`
-    );
-    detail.data.Data.map((item, i) => setData(item));
+      `http://54.174.180.252:8000/searchDataById/${router.query.id}`
+    )
+    console.log(detail, "---details")
+    setData(detail.data.Data);
   };
 
   return (
     <div style={{ height: "-webkit-fill-available" }}>
       <NavigationBar />
-      {data && <SingleProdcutContainer value={data} />}
+      {data && <SingleProdcutContainer productData={data} />}
       <HomepageFooter />
     </div>
   );

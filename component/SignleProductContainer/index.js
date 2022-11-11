@@ -7,21 +7,23 @@ import DeviceTable from "../TableForHomepage/table";
 import TabPanelBody from "../TabPanelBody";
 import axios from "axios";
 
-const HeaderOfSingleProduct = (props) => {
+const HeaderOfSingleProduct = ({ productHeaderData }) => {
+  console.log(productHeaderData, "Hey");
   return (
     <>
       <Container>
         <div className="singleHeaderContainer">
           <div className="first_singleHeaderContainer">
             {" "}
-            {/* <Image src={props.value.company_logo} width={82} height={82} /> */}
-            <Image src='../grizzle square logo 1.png' width={82} height={82} />
+            <Image src={productHeaderData.company_logo} width={82} height={82} />
+            {/* <Image src='../grizzle square logo 1.png' width={82} height={82} /> */}
           </div>
           <div className="second_singleHeaderContainer">
             <div className="rankedContianer">
               <p
                 style={{
-                  fontSize: 10,
+                  fontFamily: 'Inter',
+                  fontSize: 12,
                   fontWeight: 400,
                   color: "#896EB5",
                   marginBottom: 0,
@@ -29,12 +31,13 @@ const HeaderOfSingleProduct = (props) => {
               >
                 Sector
               </p>
-              <p style={{ fontSize: 14, fontWeight: 400, margin: "0 5px" }}>
-                {props.value.Sectors}
+              <p style={{ fontSize: 14, fontWeight: 400, margin: "0 8px" }}>
+                {/* {props.value.Sectors} */}Sector
               </p>
               <p
                 style={{
-                  fontSize: 10,
+                  fontFamily: 'Inter',
+                  fontSize: 12,
                   fontWeight: 400,
                   color: "#896EB5",
                   marginBottom: 0,
@@ -42,30 +45,32 @@ const HeaderOfSingleProduct = (props) => {
               >
                 Ranked :{" "}
                 <span
-                  style={{ fontSize: 14, fontWeight: 400, marginBottom: 0 }}
+                  style={{ fontSize: 14, fontWeight: 400, margin: "0 8px", color: 'black' }}
                 >
-                  {props.value.id}
+                  {productHeaderData.id}
                 </span>
               </p>
             </div>
             <div className="companyNameHolder">
-              <h1>{props.value.organization_name}</h1>
+              <h1>{productHeaderData.name}</h1>
             </div>
             <div className="companyDescription">
-              <p>{props.value.company_description}</p>
+              <p>{productHeaderData.description}</p>
+              {/* <p>We’re an independent animation and motion design studio based in London & Sheffield</p> */}
             </div>
           </div>
         </div>
       </Container>
     </>
-  );
+
+  )
 };
 
-const TabPanelSingleDevice = (prop) => {
+const TabPanelSingleDevice = ({ productHeaderData }) => {
+  console.log(productHeaderData, "ghghg")
   const [value, setValue] = useState(0);
   function TabPanel(props) {
-    const { children, value, index, ...other } = props;
-
+    const { children, index, ...other } = props;
     return (
       <div
         role="tabpanel"
@@ -110,46 +115,37 @@ const TabPanelSingleDevice = (prop) => {
               onChange={handleChange}
               aria-label="basic tabs example"
             >
-              <Tab label="2021" {...a11yProps(0)} />
-              <Tab label="2022" {...a11yProps(1)} />
+              {productHeaderData?.years?.map((data, index) => {
+                return (
+
+                  <Tab label={data.year} {...a11yProps(index)} />
+                )
+              })}
+              {/* <Tab label="2022" {...a11yProps(1)} /> */}
             </Tabs>
           </Box>
-          <TabPanel value={value} index={0}>
-            <TabPanelBody data={prop.value} companyName={"2021"} />
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            <TabPanelBody data={prop.value} companyName={"2022"} />
-          </TabPanel>
+          {productHeaderData?.years?.map((data, index) => {
+            return (
+              <TabPanel value={value} index={index}>
+                <TabPanelBody singleDevice={data} companyName={"2021"} />
+              </TabPanel>
+            )
+          })}
+          {/* //       <TabPanel value={value} index={1}>
+  //         <TabPanelBody data={prop.value} companyName={"2022"} />
+  //       </TabPanel> */}
         </Box>
       </Container>
     </div>
+    // <h1>Disha</h1>
   );
 };
-const SingleProdcutContainer = ({ value }) => {
-  console.log(value, 'aaaaaaaaaaaaaa');
-  // const router = useRouter();
-  // console.log(queryId, "Hey");
-  // const [data, setData] = useState({});
-
-  // useEffect(() => {
-  //   localStorage.setItem("queryId", router.query.id);
-  //   setTimeout(() => {
-  //     details();
-  //   }, 1000);
-  // }, []);
-
-  // const details = async () => {
-  //   console.log(localStorage.getItem("queryId"));
-  //   const detail = await axios.get(
-  //     `http://54.174.180.252:8000/searchDataById/${queryId}}`
-  //   );
-  //   detail.data.Data.map((item, i) => setData(item));
-  // };
+const SingleProdcutContainer = ({ productData }) => {
 
   return (
     <div className="singleProdcutContainer">
-      <HeaderOfSingleProduct value={value} />
-      <TabPanelSingleDevice value={value} />
+      <HeaderOfSingleProduct productHeaderData={productData} />
+      <TabPanelSingleDevice productHeaderData={productData} />
     </div>
   );
 };

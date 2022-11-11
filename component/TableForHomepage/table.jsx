@@ -8,18 +8,19 @@ import { Table } from "react-bootstrap";
 const DeviceTable = (props) => {
   const [value, setValue] = useState(-30);
   // const [tabdata,setTabdata] = useState({})
-  console.log(props.value);
+  // console.log(props.value);
   return (
 
     <Table id="deviceTable" variant="light" hover>
       <thead>
         <tr>
           <th>Rank</th>
-          <th>Name</th>
+          <th style={{ textAlign: 'left' }}>Name</th>
           <th>kg CO2e / £</th>
-          <th>Carbon Accountant</th>
+          <th> Carbon Accountant</th>
           <th>vs Baseline</th>
           <th>Confidence</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -27,12 +28,12 @@ const DeviceTable = (props) => {
           <tr>
             <td style={{ color: "#896EB5" }}>{item.id}</td>
 
-            <td>
+            <td style={{ textAlign: 'left', paddingLeft: '10px' }}>
               <div className="img_heading">
                 <Image
                   // src={item.company_logo}
                   src="../grizzle square logo 1.png"
-                  style={{ width: 40, height: 40, marginRight: "10px" }}
+                  style={{ marginRight: "10px" }}
                 />
                 <p
                   style={{
@@ -51,11 +52,11 @@ const DeviceTable = (props) => {
 
             {/* <td>{item.kg_co2e}</td> */}
             <td>5.2</td>
-            <td>
+            <td className="carbon_img">
               <Image
                 // src={item.company_logo}
                 src="../grizzle square logo 2.png"
-                style={{ width: 150, height: 50 }}
+              // style={{ width: 150, height: 50 }}
               />
             </td>
             <td
@@ -76,6 +77,7 @@ const DeviceTable = (props) => {
               {/* {item.confidence_score}% */}
               5%
             </td>
+            <td> <Image src="../arrow.png" height={15} /> </td>
           </tr>
         ))}
       </tbody>
