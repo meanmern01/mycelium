@@ -29,7 +29,7 @@ const HeaderOfSingleProduct = (props) => {
               >
                 Sector
               </p>
-              <p style={{ fontSize: 14, fontWeight: 400, marginBottom: 0 }}>
+              <p style={{ fontSize: 14, fontWeight: 400, margin: "0 5px" }}>
                 {props.value.Sectors}
               </p>
               <p

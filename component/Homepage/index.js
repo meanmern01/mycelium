@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import DeviceTable from "../TableForHomepage/table";
 import axios from "axios";
+
 const HomePageBody = () => {
   const [searchCompany, setSearchCompany] = useState("");
   const [pagination, setPagination] = useState([]);
@@ -16,19 +17,38 @@ const HomePageBody = () => {
     let items = [];
     setSearchCompany(e.target.value);
     await axios
-      .get(`http://54.174.180.252:8000/searchData/${e.target.value}`)
+      .get(e.target.value !== '' ? `http://54.174.180.252:8000/searchData/${e.target.value}` : 'http://54.174.180.252:8000/allDisplayData')
       .then((td) => {
         console.log(td.data.Data);
         setData(td.data.Data);
-        // setShowdata(td.data.Data)
-        showData(td.data.Data.length)
-        for (let number = 5; number <= td.data.Data.length; number = number + 5) { items.push(number); }
-        setPagination(items);
+        showData(td.data.Data)
+        for (let number = 25; number <= td.data.Data.length; number = number + 5) { data.length > 20 ? items.push(number) : items.push(25) }
+        setPagination([5, 10, 15, 20, ...items]);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  const displayAllData = async () => {
+    let items = [];
+    await axios
+      .get('http://54.174.180.252:8000/allDisplayData')
+      .then((td) => {
+        console.log(td.data.Data);
+        setData(td.data.Data);
+        showData(td.data.Data)
+        for (let number = 25; number <= td.data.Data.length; number = number + 5) { data.length > 20 ? items.push(number) : items.push(25) }
+        setPagination([5, 10, 15, 20, ...items]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  useEffect(() => {
+    displayAllData();
+  }, [])
 
   return (
     <>
@@ -78,13 +98,13 @@ const HomePageBody = () => {
         </div>
         <div className="tableBody">
           <Container>
-            <DeviceTable value={showdata.length > 0 ? showdata : data} />
+            <DeviceTable value={showdata.length > 0 ? showdata : data.slice(0, 5)} />
           </Container>
           <Container>
             <div className="tableCaption">
               <p >
                 Results per page :
-                {pagination.map((data) => {
+                {data.length > 0 ? pagination.map((data) => {
                   return (
                     <span
                       onClick={() => {
@@ -100,7 +120,16 @@ const HomePageBody = () => {
                       {data}
                     </span>
                   );
-                })}{" "}
+                })
+                  :
+                  <span
+                    style={{
+                      color: "#896EB5",
+                      paddingLeft: "5px",
+                      fontWeight: 600,
+                    }}
+                  >0 </span>
+                }
               </p>
               <p style={{ color: "#896EB5" }}>
                 Showing results in:{" "}

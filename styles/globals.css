@@ -235,7 +235,7 @@ border: 1px solid rgba(169, 168, 168, 0.2);
 }
 .second_singleHeaderContainer .rankedContianer
 {
-  max-width: 170px;
+  /* max-width: 170px; */
   display: flex;
   flex-direction: row;
   justify-content: space-around;
