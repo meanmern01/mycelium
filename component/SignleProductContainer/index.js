@@ -8,14 +8,13 @@ import TabPanelBody from "../TabPanelBody";
 import axios from "axios";
 
 const HeaderOfSingleProduct = ({ productHeaderData }) => {
-  console.log(productHeaderData, "Hey");
   return (
     <>
       <Container>
         <div className="singleHeaderContainer">
           <div className="first_singleHeaderContainer">
             {" "}
-            <Image src={productHeaderData.company_logo} width={82} height={82} />
+            <Image src={productHeaderData?.company_logo} width={82} height={82} />
             {/* <Image src='../grizzle square logo 1.png' width={82} height={82} /> */}
           </div>
           <div className="second_singleHeaderContainer">
@@ -47,15 +46,15 @@ const HeaderOfSingleProduct = ({ productHeaderData }) => {
                 <span
                   style={{ fontSize: 14, fontWeight: 400, margin: "0 8px", color: 'black' }}
                 >
-                  {productHeaderData.id}
+                  {productHeaderData?.id}
                 </span>
               </p>
             </div>
             <div className="companyNameHolder">
-              <h1>{productHeaderData.name}</h1>
+              <h1>{productHeaderData?.name}</h1>
             </div>
             <div className="companyDescription">
-              <p>{productHeaderData.description}</p>
+              <p>{productHeaderData?.description}</p>
               {/* <p>We’re an independent animation and motion design studio based in London & Sheffield</p> */}
             </div>
           </div>
@@ -67,7 +66,7 @@ const HeaderOfSingleProduct = ({ productHeaderData }) => {
 };
 
 const TabPanelSingleDevice = ({ productHeaderData }) => {
-  console.log(productHeaderData, "ghghg")
+
   const [value, setValue] = useState(0);
   function TabPanel(props) {
     const { children, index, ...other } = props;
@@ -127,7 +126,7 @@ const TabPanelSingleDevice = ({ productHeaderData }) => {
           {productHeaderData?.years?.map((data, index) => {
             return (
               <TabPanel value={value} index={index}>
-                <TabPanelBody singleDevice={data} companyName={"2021"} />
+                <TabPanelBody singleDevice={productHeaderData} companyName={index} />
               </TabPanel>
             )
           })}
@@ -141,11 +140,11 @@ const TabPanelSingleDevice = ({ productHeaderData }) => {
   );
 };
 const SingleProdcutContainer = ({ productData }) => {
-
+  console.log(productData, 'dataaaaaaa');
   return (
     <div className="singleProdcutContainer">
-      <HeaderOfSingleProduct productHeaderData={productData} />
-      <TabPanelSingleDevice productHeaderData={productData} />
+      {productData && <HeaderOfSingleProduct productHeaderData={productData[0]} />}
+      {productData && <TabPanelSingleDevice productHeaderData={productData[0]} />}
     </div>
   );
 };

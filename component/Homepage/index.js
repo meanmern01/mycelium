@@ -12,46 +12,57 @@ const HomePageBody = () => {
   const showData = (num) => {
     setShowdata(data.slice(0, num))
   }
+  useEffect(() => {
 
-  const search = async (e) => {
-    let items = [];
-    setSearchCompany(e.target.value);
-    await axios
-      .get(e.target.value !== '' ? `http://54.174.180.252:8000/searchData/${e.target.value}` : 'http://54.174.180.252:8000/allDisplayData')
+    axios
+      .get(searchCompany !== '' ? `http://54.174.180.252:8000/searchData/${searchCompany}` : 'http://54.174.180.252:8000/getAllYearData')
       .then((td) => {
 
-        let ids = []
-        td.data.Data.map((item) => {
-          ids.push(item.id)
-        }
-        )
-        console.log(ids, 'unsorted');
-        console.log(td.data.Data.sort((a, b) => b - a), 'sorted');
 
         setData(td.data.Data);
         showData(td.data.Data)
-        for (let number = 25; number <= td.data.Data.length; number = number + 5) { data.length > 20 ? items.push(number) : items.push(25) }
-        setPagination([5, 10, 15, 20, ...items]);
+        let number = 5
+        do {
+          number + 5
+          items.push(number)
+        } while (number <= td.data.Data.length);
+        td.data.Data.length > 20 ? setPagination(items) : setPagination([5, 10, 15, 20]);
       })
       .catch((error) => {
         console.log(error);
       });
-  };
+  }, [searchCompany])
+  // const search = async (e) => {
+  //   console.log("called!");
+  //   let items = [];
+  //   setSearchCompany(e.target.value);
+  //   console.log(e.target.value);
+  // };
 
   const displayAllData = async () => {
-    let items = [];
+    let items = [5];
     await axios
-      .get('http://54.174.180.252:8000/allDisplayData')
+      .get('http://54.174.180.252:8000/getAllYearData')
       .then((td) => {
-        let ids = []
         setData(td.data.Data);
         showData(td.data.Data)
-        for (let number = 25; number <= td.data.Data.length; number = number + 5) { data.length > 20 && items.push(number) }
-        setPagination([5, 10, 15, 20, ...items]);
+        console.log(td.data.Data)
+        let number = 5
+        do {
+          number += 5
+          items.push(number)
+        } while (number <= td.data.Data.length);
+        td.data.Data.length > 20 ? setPagination(items) : setPagination([5, 10, 15, 20]);
       })
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  const dataFilter = () => {
+    console.log(data.sort((a, b) => b.rank_number - a.rank_number), 'sorted');
+    // setData(data.sort((a, b) => b.rank_number - a.rank_number))
+    setShowdata(data.sort((a, b) => b.rank_number - a.rank_number))
   }
 
   useEffect(() => {
@@ -68,7 +79,7 @@ const HomePageBody = () => {
             </h1>
             <p>13,000 submissions and counting. Open source, free to all.</p>
 
-            <p class="mobile_show">
+            <p className="mobile_show">
               Showing{" "}
               <span style={{ color: "#896EB5", fontWeight: 600 }}>
                 {data?.length}
@@ -115,7 +126,9 @@ const HomePageBody = () => {
                   style={{
                     color: "#896EB5",
                     fontWeight: 600,
+                    cursor: 'pointer'
                   }}
+                  onClick={dataFilter}
                 >
                   {" "}
                   Highest to lowest score{" "}
@@ -128,7 +141,9 @@ const HomePageBody = () => {
                 placeholder="&#xF002; search users"
                 className="me-2"
                 aria-label="Search"
-                onChange={search}
+                onChange={(e) => {
+                  setSearchCompany(e.target.value)
+                }}
               />
             </Form>
 
@@ -142,9 +157,10 @@ const HomePageBody = () => {
             <div className="tableCaption">
               <p >
                 Results per page :
-                {data.length > 0 ? pagination.map((data) => {
+                {data.length > 0 ? pagination.map((data, index) => {
                   return (
                     <span
+                      key={index}
                       onClick={() => {
                         showData(data);
                       }}
