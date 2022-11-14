@@ -13,6 +13,9 @@ const HomePageBody = () => {
     setShowdata(data.slice(0, num))
   }
 
+  const nextpage = () => { }
+  console.log(showdata.length);
+
   useEffect(() => {
 
     // axios
@@ -35,13 +38,6 @@ const HomePageBody = () => {
     displayAllData(api)
   }, [searchCompany])
 
-  // const search = async (e) => {
-  //   console.log("called!");
-  //   let items = [];
-  //   setSearchCompany(e.target.value);
-  //   console.log(e.target.value);
-  // };
-
   const displayAllData = async (api) => {
     let items = [5];
     await axios
@@ -63,11 +59,8 @@ const HomePageBody = () => {
         console.log(error);
       });
   }
-
   const dataFilter = () => {
-    // console.log(field, 'feild');
     setData(data.sort((a, b) => b.years[0]?.confidence_score - a.years[0]?.confidence_score))
-    // setData(data.sort((a, b) => { `${b}.${field}` - `${a}.${field}` }))
     showData(5)
   }
 
@@ -151,7 +144,6 @@ const HomePageBody = () => {
                 }}
               />
             </Form>
-
           </Container>
         </div>
         <div className="tableBody">
@@ -162,7 +154,6 @@ const HomePageBody = () => {
             <div className="tableCaption">
               <p >
                 Results per page :
-
                 {data.length > 0 ? pagination.map((data, index) => {
                   return (
                     <span

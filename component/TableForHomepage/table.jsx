@@ -49,8 +49,6 @@ const DeviceTable = (props) => {
                 </p>
               </div>
             </td>
-
-            {/* <td>{item.kg_co2e}</td> */}
             <td>{item.years[0] ? item.years[0].intensity_per_revenue : 'N/A'}</td>
             <td className="carbon_img">
               {
@@ -79,7 +77,6 @@ const DeviceTable = (props) => {
               }}
             >
               {item.years[0] ? item.years[0].exiobase + '% CO2e' : 'N/A'}
-              {/* 30% CO2e */}
             </td>
             <td
               style={{
@@ -88,11 +85,16 @@ const DeviceTable = (props) => {
               }}
             >
               {item.years[0] ? item.years[0]?.confidence_score + '%' : 'N/A'}
-              {/* 5% */}
             </td>
             <td> <Image src="../arrow.png" height={15} /> </td>
           </tr>
         ))}
+        <tr>
+          <td colSpan={7} >
+            <button>Previous</button>
+            <button>Next</button>
+          </td>
+        </tr>
       </tbody>
     </Table>
   );
