@@ -51,13 +51,26 @@ const DeviceTable = (props) => {
             </td>
 
             {/* <td>{item.kg_co2e}</td> */}
-            <td>{item.years[0]?.intensity_per_revenue}</td>
+            <td>{item.years[0] ? item.years[0].intensity_per_revenue : 'N/A'}</td>
             <td className="carbon_img">
-              <Image
-                // src={item.company_logo}
-                src={item.years[0]?.carbon_accountant}
-                style={{ width: 100, height: 50 }}
-              />
+              {
+                item.years[0]?.carbon_accountant ?
+                  <Image
+                    src={item.years[0].carbon_accountant}
+                    style={{ width: 100, height: 50 }}
+                  />
+                  :
+                  <p
+                    style={{
+                      color: "black",
+                      marginBottom: "0px",
+                      fontWeight: "bold",
+                      textDecoration: null,
+                    }}
+                  >
+                    N/A
+                  </p>
+              }
             </td>
             <td
               style={{
@@ -65,7 +78,7 @@ const DeviceTable = (props) => {
                 fontWeight: 600,
               }}
             >
-              {item.years[0]?.exiobase}% CO2e
+              {item.years[0] ? item.years[0].exiobase + '% CO2e' : 'N/A'}
               {/* 30% CO2e */}
             </td>
             <td
@@ -74,7 +87,7 @@ const DeviceTable = (props) => {
                 fontWeight: 600,
               }}
             >
-              {item.years[0]?.confidence_score ? item.years[0]?.confidence_score : 0}%
+              {item.years[0] ? item.years[0]?.confidence_score + '%' : 'N/A'}
               {/* 5% */}
             </td>
             <td> <Image src="../arrow.png" height={15} /> </td>

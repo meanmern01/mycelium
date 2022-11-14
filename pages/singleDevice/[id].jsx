@@ -11,17 +11,14 @@ const SingleProduct = () => {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    // localStorage.setItem("queryId", router.query.id);
-    // setTimeout(() => {
     details();
-    // }, 1000);
   }, []);
 
   const details = async () => {
-    // console.log(localStorage.getItem("queryId"));
-    const detail = await axios.get(
-      `http://54.174.180.252:8000/searchDataById/${router.query.id}`
-    )
+    const text = window.location.pathname.split("/")
+
+    // console.log(text[text.length - 1], "router");
+    const detail = await axios.get(`http://54.174.180.252:8000/searchDataById/${text[text.length - 1]}`)
     console.log(detail, "---details")
     setData(detail.data.Data);
   };

@@ -522,6 +522,9 @@ color: #323232;
   .tabPanelSingleDevice .container > div {
     width: 100% !important;
   }
+  .informationHolder p{
+    overflow-wrap: break-word;
+  }
 }
 @media (max-width: 767px){
   .searchResultHolder{

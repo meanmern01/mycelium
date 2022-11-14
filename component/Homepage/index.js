@@ -162,6 +162,7 @@ const HomePageBody = () => {
             <div className="tableCaption">
               <p >
                 Results per page :
+
                 {data.length > 0 ? pagination.map((data, index) => {
                   return (
                     <span
