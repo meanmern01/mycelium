@@ -12,26 +12,29 @@ const HomePageBody = () => {
   const showData = (num) => {
     setShowdata(data.slice(0, num))
   }
+
   useEffect(() => {
 
-    axios
-      .get(searchCompany !== '' ? `http://54.174.180.252:8000/searchData/${searchCompany}` : 'http://54.174.180.252:8000/getAllYearData')
-      .then((td) => {
+    // axios
+    //   .get(searchCompany !== '' ? `http://54.174.180.252:8000/searchData/${searchCompany}` : 'http://54.174.180.252:8000/getAllYearData')
+    //   .then((td) => {
 
-
-        setData(td.data.Data);
-        showData(td.data.Data)
-        let number = 5
-        do {
-          number + 5
-          items.push(number)
-        } while (number <= td.data.Data.length);
-        td.data.Data.length > 20 ? setPagination(items) : setPagination([5, 10, 15, 20]);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    //     setData(td.data.Data);
+    //     showData(td.data.Data)
+    //     let number = 5
+    //     do {
+    //       number + 5
+    //       items.push(number)
+    //     } while (number <= td.data.Data.length);
+    //     td.data.Data.length > 20 ? setPagination(items) : setPagination([5, 10, 15, 20]);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+    const api = searchCompany !== '' ? `http://54.174.180.252:8000/searchData/${searchCompany}` : 'http://54.174.180.252:8000/getAllYearData'
+    displayAllData(api)
   }, [searchCompany])
+
   // const search = async (e) => {
   //   console.log("called!");
   //   let items = [];
@@ -39,10 +42,10 @@ const HomePageBody = () => {
   //   console.log(e.target.value);
   // };
 
-  const displayAllData = async () => {
+  const displayAllData = async (api) => {
     let items = [5];
     await axios
-      .get('http://54.174.180.252:8000/getAllYearData')
+      .get(api)
       .then((td) => {
         setData(td.data.Data);
         showData(td.data.Data)
@@ -52,7 +55,9 @@ const HomePageBody = () => {
           number += 5
           items.push(number)
         } while (number <= td.data.Data.length);
-        td.data.Data.length > 20 ? setPagination(items) : setPagination([5, 10, 15, 20]);
+        // td.data.Data.length > 20 ? setPagination(items) : setPagination([5, 10, 15, 20]);
+        // setPagination(items)
+        setPagination([5, 10, 15, 20, 25])
       })
       .catch((error) => {
         console.log(error);
@@ -60,14 +65,15 @@ const HomePageBody = () => {
   }
 
   const dataFilter = () => {
-    console.log(data.sort((a, b) => b.rank_number - a.rank_number), 'sorted');
-    // setData(data.sort((a, b) => b.rank_number - a.rank_number))
-    setShowdata(data.sort((a, b) => b.rank_number - a.rank_number))
+    // console.log(field, 'feild');
+    setData(data.sort((a, b) => b.years[0]?.confidence_score - a.years[0]?.confidence_score))
+    // setData(data.sort((a, b) => { `${b}.${field}` - `${a}.${field}` }))
+    showData(5)
   }
 
-  useEffect(() => {
-    displayAllData();
-  }, [])
+  // useEffect(() => {
+  //   displayAllData('http://54.174.180.252:8000/getAllYearData');
+  // }, [])
 
   return (
     <>
@@ -86,7 +92,7 @@ const HomePageBody = () => {
               </span>{" "}
               Mycelium results for{" "}
               <span style={{ color: "#896EB5", fontWeight: 600 }}>
-                ‘{searchCompany}’
+                {searchCompany}
               </span>{" "}
             </p>
 
@@ -116,7 +122,6 @@ const HomePageBody = () => {
                   ‘{searchCompany}’
                 </span>{" "}
               </p>
-
 
               <p className="filter"
                 style={{ textDecoration: "underline", letterSpacing: "0.5px" }}
@@ -151,7 +156,7 @@ const HomePageBody = () => {
         </div>
         <div className="tableBody">
           <Container>
-            <DeviceTable value={showdata.length > 0 ? showdata : data.slice(0, 5)} />
+            <DeviceTable detectFeild={dataFilter} value={showdata.length > 0 ? showdata : data.slice(0, 5)} />
           </Container>
           <Container>
             <div className="tableCaption">

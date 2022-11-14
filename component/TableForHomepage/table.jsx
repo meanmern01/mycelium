@@ -8,7 +8,7 @@ import { Table } from "react-bootstrap";
 const DeviceTable = (props) => {
   const [value, setValue] = useState(-30);
   // const [tabdata,setTabdata] = useState({})
-  console.log(props.value);
+
   return (
 
     <Table id="deviceTable" variant="light" hover>
@@ -16,7 +16,7 @@ const DeviceTable = (props) => {
         <tr>
           <th>Rank</th>
           <th style={{ textAlign: 'left' }}>Name</th>
-          <th>kg CO2e / £</th>
+          <th >kg CO2e / £</th>
           <th> Carbon Accountant</th>
           <th>vs Baseline</th>
           <th>Confidence</th>
@@ -74,7 +74,7 @@ const DeviceTable = (props) => {
                 fontWeight: 600,
               }}
             >
-              {item.years[0]?.confidence_score}%
+              {item.years[0]?.confidence_score ? item.years[0]?.confidence_score : 0}%
               {/* 5% */}
             </td>
             <td> <Image src="../arrow.png" height={15} /> </td>
