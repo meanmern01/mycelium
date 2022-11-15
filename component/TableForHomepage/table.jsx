@@ -1,13 +1,17 @@
 // import Image from "next/image";
 import { Container, Image, NavItem } from "react-bootstrap";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-
-
+import Pagination from "../Pagination/Pagination";
 const DeviceTable = (props) => {
   const [value, setValue] = useState(-30);
   // const [tabdata,setTabdata] = useState({})
+  const [newdata, setNewData] = useState([])
+
+  useEffect(() => {
+    setNewData(props.value)
+  }, [props.value])
 
   return (
 
@@ -24,7 +28,7 @@ const DeviceTable = (props) => {
         </tr>
       </thead>
       <tbody>
-        {props.value.map((item, i) => (
+        {newdata.map((item, i) => (
           <tr key={i}>
             <td style={{ color: "#896EB5" }}>{item.rank_number}</td>
 
@@ -50,7 +54,7 @@ const DeviceTable = (props) => {
               </div>
             </td>
             <td>{item.years[0] ? item.years[0].intensity_per_revenue : 'N/A'}</td>
-            <td className="carbon_img">
+            <td className="carbon_img ">
               {
                 item.years[0]?.carbon_accountant ?
                   <Image
@@ -91,8 +95,8 @@ const DeviceTable = (props) => {
         ))}
         <tr>
           <td colSpan={7} >
-            <button>Previous</button>
-            <button>Next</button>
+
+            <Pagination value={props.alldata} rows={props.rows} />
           </td>
         </tr>
       </tbody>

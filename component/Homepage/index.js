@@ -3,21 +3,20 @@ import { Button, Container, Form } from "react-bootstrap";
 import DeviceTable from "../TableForHomepage/table";
 import axios from "axios";
 
+
 const HomePageBody = () => {
   const [searchCompany, setSearchCompany] = useState("");
   const [pagination, setPagination] = useState([]);
   const [data, setData] = useState([]);
   const [showdata, setShowdata] = useState([]);
-
+  const [rows, setRows] = useState(5)
+  // const [paginationData, setPaginationData] = useState([])
   const showData = (num) => {
+
     setShowdata(data.slice(0, num))
   }
 
-  const nextpage = () => { }
-  console.log(showdata.length);
-
   useEffect(() => {
-
     // axios
     //   .get(searchCompany !== '' ? `http://54.174.180.252:8000/searchData/${searchCompany}` : 'http://54.174.180.252:8000/getAllYearData')
     //   .then((td) => {
@@ -37,15 +36,15 @@ const HomePageBody = () => {
     const api = searchCompany !== '' ? `http://54.174.180.252:8000/searchData/${searchCompany}` : 'http://54.174.180.252:8000/getAllYearData'
     displayAllData(api)
   }, [searchCompany])
-
+  // console.log(paginationData, 'sadasdasd');
   const displayAllData = async (api) => {
     let items = [5];
     await axios
       .get(api)
       .then((td) => {
         setData(td.data.Data);
-        showData(td.data.Data)
-        console.log(td.data.Data)
+        // showData(td.data.Data)
+        // console.log(td.data.Data)
         let number = 5
         do {
           number += 5
@@ -59,14 +58,11 @@ const HomePageBody = () => {
         console.log(error);
       });
   }
+
   const dataFilter = () => {
     setData(data.sort((a, b) => b.years[0]?.confidence_score - a.years[0]?.confidence_score))
     showData(5)
   }
-
-  // useEffect(() => {
-  //   displayAllData('http://54.174.180.252:8000/getAllYearData');
-  // }, [])
 
   return (
     <>
@@ -148,8 +144,9 @@ const HomePageBody = () => {
         </div>
         <div className="tableBody">
           <Container>
-            <DeviceTable detectFeild={dataFilter} value={showdata.length > 0 ? showdata : data.slice(0, 5)} />
+            <DeviceTable alldata={data} rows={rows} value={showdata.length > 0 ? showdata : data.slice(0, 5)} />
           </Container>
+
           <Container>
             <div className="tableCaption">
               <p >
@@ -160,6 +157,7 @@ const HomePageBody = () => {
                       key={index}
                       onClick={() => {
                         showData(data);
+                        setRows(data);
                       }}
                       style={{
                         color: "#896EB5",

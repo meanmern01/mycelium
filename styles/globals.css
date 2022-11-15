@@ -649,9 +649,7 @@ td.carbon_img img {
   .footerInfoRowSecond {
     display: block;
   }  
-  .mobile_hide , .documentSection {
-    display: none !important;
-  }
+  
   a.navbar-brand {
     display: inline;
     width: 140px;
@@ -678,4 +676,36 @@ td.carbon_img img {
   .SecondCol {
     width: 100px;
   }
+  .hideOnMobile , td.hideOnMobile{
+    display: none;
+  }
+}
+
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  cursor: pointer;
+}
+
+.pagination a {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #6c7ac9;
+  color: #6c7ac9;
+}
+
+.pagination__link {
+  font-weight: bold;
+}
+
+.pagination__link--active a {
+  color: #fff;
+  background: #6c7ac9;
+}
+
+.pagination__link--disabled a {
+  color: rgb(198, 197, 202);
+  border: 1px solid rgb(198, 197, 202);
 }
