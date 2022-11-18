@@ -111,18 +111,20 @@ const TabPanelSingleDevice = ({ productHeaderData }) => {
             boxShadow: "0px 4px 14px rgba(0, 0, 0, 0.15)",
           }}
         >
+        {productHeaderData?.years.length ? 
+        <>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <Tabs
               value={value}
               onChange={handleChange}
               aria-label="basic tabs example"
-            >
+              >
               {productHeaderData?.years?.map((data, index) => {
                 return (
-
+                  
                   <Tab label={data.year} {...a11yProps(index)} />
-                )
-              })}
+                  )
+                })}
               {/* <Tab label="2022" {...a11yProps(1)} /> */}
             </Tabs>
           </Box>
@@ -133,21 +135,27 @@ const TabPanelSingleDevice = ({ productHeaderData }) => {
               </TabPanel>
             )
           })}
-          {/* //       <TabPanel value={value} index={1}>
-  //         <TabPanelBody data={prop.value} companyName={"2022"} />
-  //       </TabPanel> */}
+          </>
+        :<p style={{textAlign : "center", padding : 10, fontWeight:"bold"}}>N/A</p>}
         </Box>
       </Container>
+     
     </div>
     // <h1>Disha</h1>
   );
 };
 const SingleProdcutContainer = ({ productData }) => {
-  console.log(productData, 'dataaaaaaa');
+  console.log(productData[0]?.years, 'dataaaaaaa');
+  
+ 
   return (
     <div className="singleProdcutContainer">
-      {productData && <HeaderOfSingleProduct productHeaderData={productData[0]} />}
-      {productData && <TabPanelSingleDevice productHeaderData={productData[0]} />}
+      {productData && 
+      <>
+      <HeaderOfSingleProduct productHeaderData={productData[0]} />
+       {productData[0]?.years.length>0 ? <TabPanelSingleDevice productHeaderData={productData[0]} /> : <p style={{fontWeight : "bold", textAlign : "center"}}>N/A</p>}
+      </>}
+    
     </div>
   );
 };

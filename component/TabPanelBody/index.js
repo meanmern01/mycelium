@@ -7,6 +7,7 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
   console.log("----", singleDevice);
   return (
     <div className="tabPanelBodyMain">
+      
       <div className="tabPanelLeftPart">
         <h1
           style={{
@@ -52,10 +53,11 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
             </div>
           </div>
         </div>
-        {
-          singleDevice.years[companyName].document ?
+       
             <div className="documentSection">
               <h2>Documents</h2>
+              {
+          singleDevice.years[companyName].document ?
               <div >
                 <a className="pdfHolder" style={{ cursor: 'pointer' }} href={singleDevice.years[companyName].document} target='_blank'>
                   <Image
@@ -66,10 +68,11 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
                   <p>{singleDevice.years[companyName].document.split("/").reverse()[0]}</p>
                 </a>
               </div>
+                  :
+                  'N/A'
+              }
             </div>
-            :
-            'N/A'
-        }
+        
       </div>
       <div className="tabPanelRightPart">
         <h1>Carbon accounting</h1>
@@ -98,11 +101,12 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
             <div className="informationHolder">
               <h4>Carbon accountant</h4>
               <div className="subInformationHolder3">
+                {singleDevice.years[companyName]?.carbon_accountant ? 
                 <Image
-                  src={singleDevice.years[companyName]?.carbon_accountant ? singleDevice.years[companyName]?.carbon_accountant : "N/A"}
+                  src={singleDevice.years[companyName]?.carbon_accountant}
                   width={117}
                 // height={50}
-                />
+                /> : <p>N/A</p> }
               </div>
             </div>
             <div className="informationHolder">
@@ -150,7 +154,9 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
             </div>
             <div className="subBottomInformation">
               <h5>vs EXIOBASE UK</h5>
-              <p style={{ color: '#6EB575' }}>{singleDevice.years[companyName].exiobase ? singleDevice.years[companyName].exiobase:"N/A" }% CO<sub>2</sub>e</p>
+              {singleDevice.years[companyName].exiobase ? 
+              <p style={{ color: '#6EB575' }}>{ singleDevice.years[companyName].exiobase}% CO<sub>2</sub>e</p>
+              :<p >N/A</p>}
             </div>
           </div>
         </div>
@@ -161,3 +167,5 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
 };
 
 export default TabPanelBody;
+
+"https://www.x5.ru/en/PublishingImages/Pages/Investors/Result"

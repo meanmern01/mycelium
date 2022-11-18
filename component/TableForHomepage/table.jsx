@@ -36,7 +36,7 @@ const DeviceTable = (props) => {
       console.log(props.rows, "----",props.alldata.length)
       setpageCount(Math.ceil(props.alldata.length / props.rows))
       console.log(props, "--pagecount")
-   },[props.alldata,currentPage, props.rows ])
+   },[props.flag,props.alldata,currentPage, props.rows ])
    
 
   return (

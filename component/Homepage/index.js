@@ -11,6 +11,7 @@ HomePageBody = () => {
   const [data, setData] = useState([]);
   const [showdata, setShowdata] = useState([]);
   const [rows, setRows] = useState(5)
+  const [flag, setFlag] = useState(false)
   // const [paginationData, setPaginationData] = useState([])
   const showData = (num) => {
 
@@ -44,6 +45,7 @@ HomePageBody = () => {
       .get(api)
       .then((td) => {
         setData(td.data.Data);
+        setFlag(!flag)
         // showData(td.data.Data)
         // console.log(td.data.Data)
         let number = 5
@@ -62,6 +64,7 @@ HomePageBody = () => {
 
   const dataFilter = () => {
     setData(data.sort((a, b) => b.years[0]?.confidence_score - a.years[0]?.confidence_score))
+    setFlag(!flag)
     showData(5)
   }
 
@@ -145,7 +148,7 @@ HomePageBody = () => {
         </div>
         <div className="tableBody">
           <Container>
-            <DeviceTable alldata={data} rows={rows} value={showdata.length > 0 ? showdata : data.slice(0, 5)} />
+            <DeviceTable alldata={data} rows={rows} value={showdata.length > 0 ? showdata : data.slice(0, 5)} flag={flag}/>
           </Container>
 
           <Container>
