@@ -4,7 +4,8 @@ import DeviceTable from "../TableForHomepage/table";
 import axios from "axios";
 
 
-const HomePageBody = () => {
+const 
+HomePageBody = () => {
   const [searchCompany, setSearchCompany] = useState("");
   const [pagination, setPagination] = useState([]);
   const [data, setData] = useState([]);

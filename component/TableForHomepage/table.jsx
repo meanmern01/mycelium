@@ -56,15 +56,28 @@ const DeviceTable = (props) => {
       <tbody>
         {filteredData.map((item, i) => (
           <tr key={i}>
-            <td style={{ color: "#896EB5" }}>{item.rank_number}</td>
+            <td style={{ color: "#896EB5" }}>{item.rank_number ? item.rank_number : "N/A"}</td>
 
             <td style={{ textAlign: 'left', paddingLeft: '10px' }}>
               <div className="img_heading">
-                <Image
+               {item.company_logo ?
+               <Image
                   src={item.company_logo}
                   // src="../grizzle square logo 1.png"
                   style={{ marginRight: "10px", width: 50, height: 50 }}
                 />
+                 :
+                  <p
+                    style={{
+                      color: "black",
+                      marginBottom: "0px",
+                      fontWeight: "bold",
+                      textDecoration: null,
+                    }}
+                  >
+                    N/A
+                  </p>
+                  }
                 <p
                   style={{
                     color: "black",
@@ -74,7 +87,7 @@ const DeviceTable = (props) => {
                   }}
                 >
                   <Link className="menuLink" href={`singleDevice/${item.id}`}>
-                    {item.name}
+                    {item.name ? item.name : "N/A"}
                   </Link>
                 </p>
               </div>

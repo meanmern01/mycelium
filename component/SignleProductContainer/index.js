@@ -8,6 +8,7 @@ import TabPanelBody from "../TabPanelBody";
 import axios from "axios";
 
 const HeaderOfSingleProduct = ({ productHeaderData }) => {
+  console.log("productHeaderData",productHeaderData)
   return (
     <>
       <Container>
@@ -31,7 +32,9 @@ const HeaderOfSingleProduct = ({ productHeaderData }) => {
                 Sector
               </p>
               <p style={{ fontSize: 14, fontWeight: 400, margin: "0 8px" }}>
-                {/* {props.value.Sectors} */}Sector
+                {productHeaderData?.years[0].sector_name
+ ? productHeaderData?.years[0].sector_name
+ : "N/A" }
               </p>
               <p
                 style={{
@@ -46,15 +49,15 @@ const HeaderOfSingleProduct = ({ productHeaderData }) => {
                 <span
                   style={{ fontSize: 14, fontWeight: 400, margin: "0 8px", color: 'black' }}
                 >
-                  {productHeaderData?.id}
+                  {productHeaderData?.id ? productHeaderData?.id : "N/A"}
                 </span>
               </p>
             </div>
             <div className="companyNameHolder">
-              <h1>{productHeaderData?.name}</h1>
+              <h1>{productHeaderData?.name ? productHeaderData?.name : "N/A"}</h1>
             </div>
             <div className="companyDescription">
-              <p>{productHeaderData?.description}</p>
+              <p>{productHeaderData?.description ? productHeaderData?.description : "N/A"}</p>
               {/* <p>We’re an independent animation and motion design studio based in London & Sheffield</p> */}
             </div>
           </div>

@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import Link from "next/link";
 const TabPanelBody = ({ singleDevice, companyName }) => {
   // console.log("props----", singleDevice);
-  console.log("sdfdsfdasfdsa", singleDevice.location);
+  console.log("----", singleDevice);
   return (
     <div className="tabPanelBodyMain">
       <div className="tabPanelLeftPart">
@@ -24,31 +24,31 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
             <div className="informationHolder">
               <h4>Website URL</h4>
               {/* <p style={{ color: "#896EB5" }}>www.grizzle.london</p> */}
-              <p style={{ color: "#896EB5", lineBreak: "anywhere" }}>{singleDevice.website_url ? singleDevice.website_url : 'www.grizzle.london'}</p>
+              <p style={{ color: "#896EB5", lineBreak: "anywhere" }}>{singleDevice.website_url ? singleDevice.website_url : 'N/A'}</p>
             </div>
             <div className="informationHolder">
               <h4>Country</h4>
               {/* <p> United Kingdom</p> */}
-              <p>{singleDevice.country ? singleDevice.country : 'country'}</p>
+              <p>{singleDevice.country ? singleDevice.country : 'N/A'}</p>
             </div>
             <div className="informationHolder">
               <h4>Location</h4>
               {/* <p>6 Hoxton Square London, N1 6NU</p> */}
-              <p>{singleDevice.location ? singleDevice.location : 'location'}</p>
+              <p>{singleDevice.location ? singleDevice.location : 'N/A'}</p>
             </div>
           </div>
           <div>
             <div className="informationHolder">
               <h4>Name</h4>
-              <p>{singleDevice.name ? singleDevice.name : 'Organization'}</p>
+              <p>{singleDevice.name ? singleDevice.name : 'N/A'}</p>
             </div>
             <div className="informationHolder">
               <h4>Contact</h4>
-              <p>{singleDevice.contact ? singleDevice.contact : '+44 1516 561 651'}</p>
+              <p>{singleDevice.contact ? singleDevice.contact : 'N/A'}</p>
             </div>
             <div className="informationHolder">
               <h4>Email</h4>
-              <p>{singleDevice.email ? singleDevice.email : 'info@grizzle.london'}</p>
+              <p>{singleDevice.email ? singleDevice.email : 'N/A'}</p>
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
               </div>
             </div>
             :
-            ''
+            'N/A'
         }
       </div>
       <div className="tabPanelRightPart">
@@ -84,13 +84,13 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
                   width={73.67}
                   height={62.73}
                 />
-                <p>{singleDevice.years[companyName].mycelium_score}</p>
+                <p>{singleDevice.years[companyName].mycelium_score ? singleDevice.years[companyName].mycelium_score : "N/A"}</p>
               </div>
             </div>
             <div className="informationHolder">
               <h4>Confidence Score</h4>
               <div className="subInformationHolder2">
-                <p>{singleDevice.years[companyName].confidence_score}%</p>
+                {singleDevice.years[companyName].confidence_score ? <p>{singleDevice.years[companyName].confidence_score } %</p> : <p>N/A</p> }
               </div>
             </div>
           </div>
@@ -99,7 +99,7 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
               <h4>Carbon accountant</h4>
               <div className="subInformationHolder3">
                 <Image
-                  src={singleDevice.years[companyName]?.carbon_accountant}
+                  src={singleDevice.years[companyName]?.carbon_accountant ? singleDevice.years[companyName]?.carbon_accountant : "N/A"}
                   width={117}
                 // height={50}
                 />
@@ -108,7 +108,12 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
             <div className="informationHolder">
               <h4>vs EXIOBASE</h4>
               <div className="subInformationHolder4">
+                {singleDevice.years[companyName].exiobase ? <>
                 <p>{singleDevice.years[companyName].exiobase}%</p><span> co<sub>2</sub>e </span>
+                </>
+                :
+                <p>N/A</p>
+                }
               </div>
             </div>
           </div>
@@ -120,32 +125,32 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
             <div className="subScopeInformation">
               <h5>Scope 1</h5>
               <h6>(tCO<sub>2</sub>e) </h6>
-              <p>{singleDevice.years[companyName].scope1}</p>
+              <p>{singleDevice.years[companyName].scope1 ? singleDevice.years[companyName].scope1 : "N/A"}</p>
             </div>
             <div className="subScopeInformation">
               <h5>Scope 2</h5>
               <h6>(tCO<sub>2</sub>e) </h6>
-              <p>{singleDevice.years[companyName].scope2_total}</p>
+              <p>{singleDevice.years[companyName].scope2_total ? singleDevice.years[companyName].scope2_total: "N/A"}</p>
             </div>
             <div className="subScopeInformation">
               <h5>Scope 3</h5>
               <h6>(tCO<sub>2</sub>e) </h6>
-              <p>{singleDevice.years[companyName].scope3_total}</p>
+              <p>{singleDevice.years[companyName].scope3_total ? singleDevice.years[companyName].scope3_total : "N/A"}</p>
             </div>
             <div className="subScopeInformation">
               <h5>Total</h5>
               <h6>(tCO<sub>2</sub>e) </h6>
-              <p>26</p>
+              <p>{singleDevice.years[companyName].allscopetotal ? singleDevice.years[companyName].allscopetotal: "N/A"}</p>
             </div>
           </div>
           <div className="bottomInformationHandler">
             <div className="subBottomInformation">
               <h5>kg CO<sub>2</sub>e / £</h5>
-              <p>{singleDevice.years[companyName].intensity_per_revenue}</p>
+              <p>{singleDevice.years[companyName].intensity_per_revenue ? singleDevice.years[companyName].intensity_per_revenue : "N/A"}</p>
             </div>
             <div className="subBottomInformation">
               <h5>vs EXIOBASE UK</h5>
-              <p style={{ color: '#6EB575' }}>{singleDevice.years[companyName].exiobase}% CO<sub>2</sub>e</p>
+              <p style={{ color: '#6EB575' }}>{singleDevice.years[companyName].exiobase ? singleDevice.years[companyName].exiobase:"N/A" }% CO<sub>2</sub>e</p>
             </div>
           </div>
         </div>
