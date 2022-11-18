@@ -124,8 +124,8 @@ const DeviceTable = (props) => {
           {
                 props.rows >= 0 &&
                 <ReactPaginate
-                    previousLabel={"← Previous"}
-                    nextLabel={"Next →"}
+                    previousLabel={"<"}
+                    nextLabel={">"}
                     pageCount={pageCount}
                     onPageChange={handlePageClick}
                     containerClassName={"pagination"}
