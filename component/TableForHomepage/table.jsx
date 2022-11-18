@@ -4,14 +4,40 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import Pagination from "../Pagination/Pagination";
+import ReactPaginate from "react-paginate";
+
 const DeviceTable = (props) => {
   const [value, setValue] = useState(-30);
   // const [tabdata,setTabdata] = useState({})
   const [newdata, setNewData] = useState([])
+  const [filteredData, setFilteredData] = useState([])
+  const [currentPage, setCurrentPage] = useState(0);
+  const [data, setData] = useState([]);
+  const [pageCount, setpageCount] = useState();
 
   useEffect(() => {
     setNewData(props.value)
   }, [props.value])
+
+  // useEffect(() => {
+  //   console.log(rowsperpage);
+  //   setData(props.value);}, []);
+
+    function handlePageClick({ selected: selectedPage }) {
+      setCurrentPage(selectedPage);
+      // console.log(selectedPage);
+  }
+   useEffect(( ) => {
+      const offset = currentPage * props.rows;
+      const currentPageData = props.alldata.slice(offset, offset + props.rows)
+      // props.getData(currentPageData)
+      console.log("currentPageData---",currentPageData);
+      setFilteredData(currentPageData);
+      console.log(props.rows, "----",props.alldata.length)
+      setpageCount(Math.ceil(props.alldata.length / props.rows))
+      console.log(props, "--pagecount")
+   },[props.alldata,currentPage, props.rows ])
+   
 
   return (
 
@@ -28,7 +54,7 @@ const DeviceTable = (props) => {
         </tr>
       </thead>
       <tbody>
-        {newdata.map((item, i) => (
+        {filteredData.map((item, i) => (
           <tr key={i}>
             <td style={{ color: "#896EB5" }}>{item.rank_number}</td>
 
@@ -95,8 +121,23 @@ const DeviceTable = (props) => {
         ))}
         <tr>
           <td colSpan={7} >
+          {
+                props.rows >= 0 &&
+                <ReactPaginate
+                    previousLabel={"← Previous"}
+                    nextLabel={"Next →"}
+                    pageCount={pageCount}
+                    onPageChange={handlePageClick}
+                    containerClassName={"pagination"}
+                    previousLinkClassName={"pagination__link"}
+                    nextLinkClassName={"pagination__link"}
+                    disabledClassName={"pagination__link--disabled"}
+                    activeClassName={"pagination__link--active"}
+                />
 
-            <Pagination value={props.alldata} rows={props.rows} />
+            }
+
+            {/* <Pagination flag={props.flag} value={props.alldata} rows={props.rows} setFilteredData={setFilteredData} /> */}
           </td>
         </tr>
       </tbody>

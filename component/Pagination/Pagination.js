@@ -6,6 +6,7 @@ export default function Pagination(props) {
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(0);
     const [data, setData] = useState([]);
+    const [pageCount, setpageCount] = useState();
     const [rowsperpage, setRowsperpage] = useState(0)
 
     useEffect(() => {
@@ -24,14 +25,17 @@ export default function Pagination(props) {
 
     function handlePageClick({ selected: selectedPage }) {
         setCurrentPage(selectedPage);
-        console.log(selectedPage);
+        // console.log(selectedPage);
     }
-
-    const offset = currentPage * rowsperpage;
-    const currentPageData = data.slice(offset, offset + rowsperpage)
-    // props.getData(currentPageData)
-    console.log(currentPageData);
-    const pageCount = Math.ceil(data.length / rowsperpage);
+     useEffect(( ) => {
+        const offset = currentPage * rowsperpage;
+        const currentPageData = data.slice(offset, offset + rowsperpage)
+        // props.getData(currentPageData)
+        console.log("currentPageData",currentPageData);
+        props.setFilteredData(currentPageData);
+        setpageCount(Math.ceil(data.length / rowsperpage))
+     },[data])
+   
 
     return (
         <>

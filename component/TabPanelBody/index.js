@@ -17,7 +17,7 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
             marginBottom: "5%",
           }}
         >
-          Company Details : {singleDevice.years[companyName].year}
+          Company Details : 
         </h1>
         <div className="companyDetailsHolder">
           <div>
