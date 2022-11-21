@@ -110,10 +110,14 @@ HomePageBody = () => {
                 <span style={{ color: "#896EB5", fontWeight: 600 }}>
                   {data?.length}
                 </span>{" "}
-                Mycelium results for{" "}
+                Mycelium results
+                {searchCompany && 
+                 <span>{" "}for{" "}
                 <span style={{ color: "#896EB5", fontWeight: 600 }}>
                   ‘{searchCompany}’
                 </span>{" "}
+                 </span>
+                }
               </p>
 
               <p className="filter"

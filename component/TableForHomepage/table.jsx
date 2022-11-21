@@ -60,23 +60,23 @@ const DeviceTable = (props) => {
 
             <td style={{ textAlign: 'left', paddingLeft: '10px' }}>
               <div className="img_heading">
-               {item.company_logo ?
+               {item.company_logo &&
                <Image
                   src={item.company_logo}
                   // src="../grizzle square logo 1.png"
                   style={{ marginRight: "10px", width: 50, height: 50 }}
                 />
-                 :
-                  <p
-                    style={{
-                      color: "black",
-                      marginBottom: "0px",
-                      fontWeight: "bold",
-                      textDecoration: null,
-                    }}
-                  >
-                    N/A
-                  </p>
+                //  :
+                //   <p
+                //     style={{
+                //       color: "black",
+                //       marginBottom: "0px",
+                //       fontWeight: "bold",
+                //       textDecoration: null,
+                //     }}
+                //   >
+                //     N/A
+                //   </p>
                   }
                 <p
                   style={{
@@ -119,7 +119,7 @@ const DeviceTable = (props) => {
                 fontWeight: 600,
               }}
             >
-              {item.years[0] ? item.years[0].exiobase + '% CO2e' : 'N/A'}
+              {item.years[0].exiobase  ? item.years[0].exiobase + '% CO2e' : 'N/A'}
             </td>
             <td
               style={{
@@ -127,7 +127,7 @@ const DeviceTable = (props) => {
                 fontWeight: 600,
               }}
             >
-              {item.years[0] ? item.years[0]?.confidence_score + '%' : 'N/A'}
+              {item.years[0]?.confidence_score? item.years[0]?.confidence_score + '%' : 'N/A'}
             </td>
             <td> <Image src="../arrow.png" height={15} /> </td>
           </tr>

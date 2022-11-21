@@ -145,7 +145,7 @@ const TabPanelSingleDevice = ({ productHeaderData }) => {
   );
 };
 const SingleProdcutContainer = ({ productData }) => {
-  console.log(productData[0]?.years, 'dataaaaaaa');
+  console.log(productData, 'dataaaaaaa');
   
  
   return (

@@ -53,11 +53,11 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
             </div>
           </div>
         </div>
-       
+        {
+          singleDevice.years[companyName].document &&
             <div className="documentSection">
               <h2>Documents</h2>
-              {
-          singleDevice.years[companyName].document ?
+             
               <div >
                 <a className="pdfHolder" style={{ cursor: 'pointer' }} href={singleDevice.years[companyName].document} target='_blank'>
                   <Image
@@ -68,10 +68,10 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
                   <p>{singleDevice.years[companyName].document.split("/").reverse()[0]}</p>
                 </a>
               </div>
-                  :
-                  'N/A'
-              }
+                 
+              
             </div>
+            }
         
       </div>
       <div className="tabPanelRightPart">
