@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import {  Container, Form } from "react-bootstrap";
 import DeviceTable from "../TableForHomepage/table";
 import axios from "axios";
 
@@ -12,33 +12,16 @@ HomePageBody = () => {
   const [showdata, setShowdata] = useState([]);
   const [rows, setRows] = useState(5)
   const [flag, setFlag] = useState(false)
-  // const [paginationData, setPaginationData] = useState([])
   const showData = (num) => {
 
     setShowdata(data.slice(0, num))
   }
 
   useEffect(() => {
-    // axios
-    //   .get(searchCompany !== '' ? `http://54.174.180.252:8000/searchData/${searchCompany}` : 'http://54.174.180.252:8000/getAllYearData')
-    //   .then((td) => {
-
-    //     setData(td.data.Data);
-    //     showData(td.data.Data)
-    //     let number = 5
-    //     do {
-    //       number + 5
-    //       items.push(number)
-    //     } while (number <= td.data.Data.length);
-    //     td.data.Data.length > 20 ? setPagination(items) : setPagination([5, 10, 15, 20]);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+   
     const api = searchCompany !== '' ? `http://54.174.180.252:8000/searchData/${searchCompany}` : 'http://54.174.180.252:8000/getAllYearData'
     displayAllData(api)
   }, [searchCompany])
-  // console.log(paginationData, 'sadasdasd');
   const displayAllData = async (api) => {
     let items = [5];
     await axios
@@ -46,15 +29,11 @@ HomePageBody = () => {
       .then((td) => {
         setData(td.data.Data);
         setFlag(!flag)
-        // showData(td.data.Data)
-        // console.log(td.data.Data)
         let number = 5
         do {
           number += 5
           items.push(number)
         } while (number <= td.data.Data.length);
-        // td.data.Data.length > 20 ? setPagination(items) : setPagination([5, 10, 15, 20]);
-        // setPagination(items)
         setPagination([5, 10, 15, 20, 25])
       })
       .catch((error) => {

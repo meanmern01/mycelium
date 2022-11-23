@@ -1,11 +1,7 @@
 import React from "react";
-// import Image from "next/image";
-import { Container, Image } from "react-bootstrap";
+import {  Image } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 const NavigationBar = () => {

@@ -3,8 +3,6 @@ import { Container, Image } from "react-bootstrap";
 import React, { Component } from "react";
 import Link from "next/link";
 const TabPanelBody = ({ singleDevice, companyName }) => {
-  // console.log("props----", singleDevice);
-  console.log("----", singleDevice);
   return (
     <div className="tabPanelBodyMain">
       
@@ -105,7 +103,6 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
                 <Image
                   src={singleDevice.years[companyName]?.carbon_accountant}
                   width={117}
-                // height={50}
                 /> : <p>N/A</p> }
               </div>
             </div>
@@ -168,4 +165,3 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
 
 export default TabPanelBody;
 
-"https://www.x5.ru/en/PublishingImages/Pages/Investors/Result"

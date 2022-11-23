@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React, { useState } from "react";
-// import "bootstrap/dist/css/bootstrap.min.css";
 import NavigationBar from "../component/Navbar";
 import HomePageBody from "../component/Homepage";
 import HomepageFooter from "../component/Footer";

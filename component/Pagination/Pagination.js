@@ -10,7 +10,6 @@ export default function Pagination(props) {
     const [rowsperpage, setRowsperpage] = useState(0)
 
     useEffect(() => {
-        console.log(rowsperpage);
         setRowsperpage(props.rows)
         fetchData()
     }, []);
@@ -25,13 +24,10 @@ export default function Pagination(props) {
 
     function handlePageClick({ selected: selectedPage }) {
         setCurrentPage(selectedPage);
-        // console.log(selectedPage);
     }
      useEffect(( ) => {
         const offset = currentPage * rowsperpage;
         const currentPageData = data.slice(offset, offset + rowsperpage)
-        // props.getData(currentPageData)
-        console.log("currentPageData",currentPageData);
         props.setFilteredData(currentPageData);
         setpageCount(Math.ceil(data.length / rowsperpage))
      },[data])

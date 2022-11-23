@@ -1,14 +1,9 @@
 import { Box, Tab, Tabs, Typography } from "@mui/material";
-import { useRouter } from "next/router";
-import React, { Component, useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Container, Image } from "react-bootstrap";
-import DeviceTable from "../TableForHomepage/table";
-// import Test from "../../public/Frame.png"
 import TabPanelBody from "../TabPanelBody";
-import axios from "axios";
 
 const HeaderOfSingleProduct = ({ productHeaderData }) => {
-  console.log("productHeaderData",productHeaderData)
   return (
     <>
       <Container>
@@ -16,7 +11,6 @@ const HeaderOfSingleProduct = ({ productHeaderData }) => {
           <div className="first_singleHeaderContainer">
             {" "}
             <Image src={productHeaderData?.company_logo} width={82} height={82} />
-            {/* <Image src='../grizzle square logo 1.png' width={82} height={82} /> */}
           </div>
           <div className="second_singleHeaderContainer">
             <div className="rankedContianer">
@@ -58,7 +52,6 @@ const HeaderOfSingleProduct = ({ productHeaderData }) => {
             </div>
             <div className="companyDescription">
               <p>{productHeaderData?.description ? productHeaderData?.description : "N/A"}</p>
-              {/* <p>We’re an independent animation and motion design studio based in London & Sheffield</p> */}
             </div>
           </div>
         </div>
@@ -106,7 +99,6 @@ const TabPanelSingleDevice = ({ productHeaderData }) => {
         <Box
           sx={{
             width: "80%",
-            // border: "1px solid white",
             backgroundColor: "white",
             boxShadow: "0px 4px 14px rgba(0, 0, 0, 0.15)",
           }}
@@ -125,7 +117,6 @@ const TabPanelSingleDevice = ({ productHeaderData }) => {
                   <Tab label={data.year} {...a11yProps(index)} />
                   )
                 })}
-              {/* <Tab label="2022" {...a11yProps(1)} /> */}
             </Tabs>
           </Box>
           {productHeaderData?.years?.map((data, index) => {
@@ -141,11 +132,9 @@ const TabPanelSingleDevice = ({ productHeaderData }) => {
       </Container>
      
     </div>
-    // <h1>Disha</h1>
   );
 };
 const SingleProdcutContainer = ({ productData }) => {
-  console.log(productData, 'dataaaaaaa');
   
  
   return (

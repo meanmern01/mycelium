@@ -42,12 +42,13 @@ nav.navbar.navbar-expand-lg.navbar-light
 
 .contentHolder
 {
-  min-height: calc(100vh - 370px);
+  /* min-height: calc(100vh - 370px); */
   background-image: url("/Frame.png");
-  background-position: right;
+  background-position: bottom right;
   background-repeat: no-repeat;
 background-size: auto;
-background-attachment : fixed
+margin-bottom: 9em;
+/* background-attachment : fixed */
 }
 .contentHolder .Header
 {
@@ -196,6 +197,15 @@ input.me-2.form-control {
   margin: 0px;
   color: #FFFFFF;
 }
+.cls_img_heading{
+  margin-right: 10px;
+   width: 50px;
+    height: 50px;
+}
+.cls_img_carbon{
+  width: 100px;
+   height: 50px;
+}
 
 /* -----------------Single-page---------------------------- */
 .MuiBox-root.css-19kzrtu
@@ -217,11 +227,11 @@ border: 1px solid rgba(169, 168, 168, 0.2);
 }
 .singleProdcutContainer
 {
-  height: 100%;
-    background-image: url("/Frame.png");
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: auto;
+  background-image: url("/Frame.png");
+  background-position: bottom right;
+  background-repeat: no-repeat;
+background-size: auto;
+margin-bottom: 9em;
 }
 .singleHeaderContainer
 {
@@ -504,6 +514,51 @@ color: #323232;
 .mobile_show, .mobile_show_1{
   display: none;
 }
+
+/* tabel pagination css start */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  cursor: pointer;
+}
+
+.pagination a {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+  color: #bababb !important;
+    background-color: #f8f9fa !important;
+    text-decoration: unset;
+}
+.table-hover>tbody>tr:hover>* {
+  --bs-table-accent-bg: #f8f9fa !important;
+  
+}
+
+.pagination__link {
+  font-weight: bold;
+}
+li.pagination__link--active a {
+  color: #896EB5 !important;
+  font-weight: bold !important;
+}
+.pagination__link--active a {
+  color: #896EB5;
+  background-color: #f8f9fa;
+}
+.next a, .previous a{
+  font-size:20px;
+  color: #896EB5 !important;
+}
+.pagination__link--disabled a {
+  border: none!important;
+  cursor: default;
+  color: #bababb !important;
+  text-decoration: unset;
+}
+/* tabel pagination css end */
 /* -----------------Single-page---------------------------- */
 
 /* -------------------Footer------------------ */
@@ -604,6 +659,10 @@ color: #323232;
 }
 @media(max-width: 600px)
 {
+  
+  .pagination {
+      margin: 7px 0;
+}
   span.navbar-brand img {
     width: 100%;
     max-width: 123px;
@@ -613,26 +672,64 @@ span.navbar-brand{
   margin-right: 0;
 }
 .signInBtnNavbar{
-  width: 125px;
+   width: 95px;
+    text-align: center;
+    padding: 8px 10px !important;
+    margin-left:46px;
 }
 #deviceTable tr td p{
  font-size: 12px;
 }
-td.carbon_img img {
-  width: 27px;
-  /* padding: 10px; */
+button.navbar-toggler.collapsed {
+  width: 41px;
+  padding: 3px;
+ 
+}
+
+.pagination a {
+   background-color: #fff!important;
+   padding: 1px;
+   font-size: 12px;
+ }
+ .next a, .previous a {
+  font-size: 14px;
+  }
+.cls_img_heading {
+  margin-right: 6px;
+  width: 20px;
+  height: 20px;
+}
+.cls_img_carbon {
+  width: 40px;
+  height: 25px;
+}
+#deviceTable thead tr th {
+   font-size: 10px;
 }
 #deviceTable {
    opacity: 0.95;
+   margin: 0 auto;
+}
+.singleHeaderContainer {
+  margin: 1em 0 1.5em;
+}
+.MuiBox-root{
+  opacity: 0.95;
+  /* margin-top: 2em; */
 }
 #deviceTable tbody tr td {
-   padding: 10px !important;
+   padding: 11px!important;
+}
+#deviceTable tbody tr td {
+   font-size: 12px;
 }
 .tableCaption {
   display: flex;
-  flex-direction: column;
-   align-items: center;
-  margin: 0 auto;
+  align-items: center;
+  margin: 0 11px;
+}
+.tableCaption p {
+   padding: 10px 0 0 0;
 }
 .filter {
   display: block !important;
@@ -640,13 +737,25 @@ td.carbon_img img {
 }
 }
 @media (max-width: 576px){
+  /* .navbar{
+    justify-content: unset !important;
+  } */
+  .contentHolder, .singleProdcutContainer {
+      background-size: 84%;
+      margin-bottom: 3em;
+      background-position: center right;
+   }
+   .tableCaption p {
+    margin-right: 8px;
+}
+  div#headerComponentHolder span, .tableCaption p {
+      font-size: 12px;
+   }
   .tabPanelBodyMain {
     margin-bottom: 20px;
     flex-direction: column-reverse;
   }
-  .singleProdcutContainer {
-    height: auto;
-  }
+ 
   .footerInfoRowSecond {
     display: block;
   }  
@@ -683,45 +792,3 @@ td.carbon_img img {
 }
 
 
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  list-style: none;
-  cursor: pointer;
-}
-
-.pagination a {
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-  color: #bababb !important;
-    background-color: #f8f9fa !important;
-    text-decoration: unset;
-}
-.table-hover>tbody>tr:hover>* {
-  --bs-table-accent-bg: #f8f9fa !important;
-  
-}
-
-.pagination__link {
-  font-weight: bold;
-}
-li.pagination__link--active a {
-  color: #896EB5 !important;
-  font-weight: bold !important;
-}
-.pagination__link--active a {
-  color: #896EB5;
-  background-color: #f8f9fa;
-}
-.next a, .previous a{
-  font-size:20px;
-  color: #896EB5 !important;
-}
-.pagination__link--disabled a {
-  border: none!important;
- 
-  color: #bababb !important;
-  text-decoration: unset;
-}

@@ -1,41 +1,57 @@
-// import Image from "next/image";
-import { Container, Image, NavItem } from "react-bootstrap";
+import { Image } from "react-bootstrap";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
-import Pagination from "../Pagination/Pagination";
 import ReactPaginate from "react-paginate";
 
 const DeviceTable = (props) => {
   const [value, setValue] = useState(-30);
-  // const [tabdata,setTabdata] = useState({})
-  const [newdata, setNewData] = useState([])
   const [filteredData, setFilteredData] = useState([])
   const [currentPage, setCurrentPage] = useState(0);
-  const [data, setData] = useState([]);
   const [pageCount, setpageCount] = useState();
 
-  useEffect(() => {
-    setNewData(props.value)
-  }, [props.value])
+  function useWindowSize() {
+    const [windowSize, setWindowSize] = useState({
+      width: undefined,
+      height: undefined,
+    });
+  
+    useEffect(() => {
+      function handleResize() {
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }
+      
+      window.addEventListener("resize", handleResize);
+       
+      handleResize();
+      return () => window.removeEventListener("resize", handleResize);
+    }, []); 
+    return windowSize;
+  }
+  const size = useWindowSize();
+
+
+
 
   // useEffect(() => {
-  //   console.log(rowsperpage);
-  //   setData(props.value);}, []);
+  //   setNewData(props.value)
+  // }, [props.value])
+
+
 
     function handlePageClick({ selected: selectedPage }) {
       setCurrentPage(selectedPage);
-      // console.log(selectedPage);
+    
   }
    useEffect(( ) => {
       const offset = currentPage * props.rows;
       const currentPageData = props.alldata.slice(offset, offset + props.rows)
-      // props.getData(currentPageData)
-      console.log("currentPageData---",currentPageData);
+    
       setFilteredData(currentPageData);
-      console.log(props.rows, "----",props.alldata.length)
       setpageCount(Math.ceil(props.alldata.length / props.rows))
-      console.log(props, "--pagecount")
    },[props.flag,props.alldata,currentPage, props.rows ])
    
 
@@ -47,7 +63,7 @@ const DeviceTable = (props) => {
           <th>Rank</th>
           <th style={{ textAlign: 'left' }}>Name</th>
           <th >kg CO2e / £</th>
-          <th> Carbon Accountant</th>
+          {size.width>600 && <th> Carbon Accountant</th>}
           <th>vs Baseline</th>
           <th>Confidence</th>
           <th></th>
@@ -62,21 +78,11 @@ const DeviceTable = (props) => {
               <div className="img_heading">
                {item.company_logo &&
                <Image
+               className="cls_img_heading"
                   src={item.company_logo}
-                  // src="../grizzle square logo 1.png"
-                  style={{ marginRight: "10px", width: 50, height: 50 }}
+                 
                 />
-                //  :
-                //   <p
-                //     style={{
-                //       color: "black",
-                //       marginBottom: "0px",
-                //       fontWeight: "bold",
-                //       textDecoration: null,
-                //     }}
-                //   >
-                //     N/A
-                //   </p>
+              
                   }
                 <p
                   style={{
@@ -93,12 +99,14 @@ const DeviceTable = (props) => {
               </div>
             </td>
             <td>{item.years[0] ? item.years[0].intensity_per_revenue : 'N/A'}</td>
+            {size.width>600  &&
             <td className="carbon_img ">
               {
                 item.years[0]?.carbon_accountant ?
                   <Image
+                  className="cls_img_carbon"
                     src={item.years[0].carbon_accountant}
-                    style={{ width: 100, height: 50 }}
+                   
                   />
                   :
                   <p
@@ -112,7 +120,7 @@ const DeviceTable = (props) => {
                     N/A
                   </p>
               }
-            </td>
+            </td>}
             <td
               style={{
                 color: value < -10 ? "#6EB575" : "#C0D372",
@@ -150,7 +158,6 @@ const DeviceTable = (props) => {
 
             }
 
-            {/* <Pagination flag={props.flag} value={props.alldata} rows={props.rows} setFilteredData={setFilteredData} /> */}
           </td>
         </tr>
       </tbody>

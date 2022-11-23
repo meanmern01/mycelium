@@ -17,9 +17,7 @@ const SingleProduct = () => {
   const details = async () => {
     const text = window.location.pathname.split("/")
 
-    // console.log(text[text.length - 1], "router");
     const detail = await axios.get(`http://54.174.180.252:8000/searchDataById/${text[text.length - 1]}`)
-    console.log(detail, "---details")
     setData(detail.data.Data);
   };
 
