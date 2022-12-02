@@ -44,11 +44,11 @@ nav.navbar.navbar-expand-lg.navbar-light
 {
   /* min-height: calc(100vh - 370px); */
   background-image: url("/Frame.png");
-  background-position: bottom right;
+  background-position: 95% 50%;
   background-repeat: no-repeat;
 background-size: auto;
-margin-bottom: 9em;
-/* background-attachment : fixed */
+margin-bottom: 5em;
+background-attachment : fixed
 }
 .contentHolder .Header
 {
