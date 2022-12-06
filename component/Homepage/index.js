@@ -1,51 +1,54 @@
 import React, { useEffect, useState } from "react";
-import {  Container, Form } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 import DeviceTable from "../TableForHomepage/table";
 import axios from "axios";
 
-
-const 
-HomePageBody = () => {
+const HomePageBody = () => {
   const [searchCompany, setSearchCompany] = useState("");
   const [pagination, setPagination] = useState([]);
   const [data, setData] = useState([]);
   const [showdata, setShowdata] = useState([]);
-  const [rows, setRows] = useState(5)
-  const [flag, setFlag] = useState(false)
+  const [rows, setRows] = useState(5);
+  const [flag, setFlag] = useState(false);
   const showData = (num) => {
-
-    setShowdata(data.slice(0, num))
-  }
+    setShowdata(data.slice(0, num));
+  };
 
   useEffect(() => {
-   
-    const api = searchCompany !== '' ? `http://54.174.180.252:8000/searchData/${searchCompany}` : 'http://54.174.180.252:8000/getAllYearData'
-    displayAllData(api)
-  }, [searchCompany])
+    const api =
+      searchCompany !== ""
+        ? `http://54.174.180.252:8000/searchData/${searchCompany}`
+        : "http://54.174.180.252:8000/getAllYearData";
+    displayAllData(api);
+  }, [searchCompany]);
   const displayAllData = async (api) => {
     let items = [5];
     await axios
       .get(api)
       .then((td) => {
         setData(td.data.Data);
-        setFlag(!flag)
-        let number = 5
+        setFlag(!flag);
+        let number = 5;
         do {
-          number += 5
-          items.push(number)
+          number += 5;
+          items.push(number);
         } while (number <= td.data.Data.length);
-        setPagination([5, 10, 15, 20, 25])
+        setPagination([5, 10, 15, 20, 25]);
       })
       .catch((error) => {
-        console.log(error);
+        return error.message;
       });
-  }
+  };
 
   const dataFilter = () => {
-    setData(data.sort((a, b) => b.years[0]?.confidence_score - a.years[0]?.confidence_score))
-    setFlag(!flag)
-    showData(5)
-  }
+    setData(
+      data.sort(
+        (a, b) => b.years[0]?.confidence_score - a.years[0]?.confidence_score
+      )
+    );
+    setFlag(!flag);
+    showData(5);
+  };
 
   return (
     <>
@@ -68,7 +71,8 @@ HomePageBody = () => {
               </span>{" "}
             </p>
 
-            <p className="filter mobile_show_1"
+            <p
+              className="filter mobile_show_1"
               style={{ textDecoration: "underline", letterSpacing: "0.5px" }}
             >
               Filter :{" "}
@@ -90,16 +94,19 @@ HomePageBody = () => {
                   {data?.length}
                 </span>{" "}
                 Mycelium results
-                {searchCompany && 
-                 <span>{" "}for{" "}
-                <span style={{ color: "#896EB5", fontWeight: 600 }}>
-                  ‘{searchCompany}’
-                </span>{" "}
-                 </span>
-                }
+                {searchCompany && (
+                  <span>
+                    {" "}
+                    for{" "}
+                    <span style={{ color: "#896EB5", fontWeight: 600 }}>
+                      ‘{searchCompany}’
+                    </span>{" "}
+                  </span>
+                )}
               </p>
 
-              <p className="filter"
+              <p
+                className="filter"
                 style={{ textDecoration: "underline", letterSpacing: "0.5px" }}
               >
                 Filter :{" "}
@@ -107,7 +114,7 @@ HomePageBody = () => {
                   style={{
                     color: "#896EB5",
                     fontWeight: 600,
-                    cursor: 'pointer'
+                    cursor: "pointer",
                   }}
                   onClick={dataFilter}
                 >
@@ -123,7 +130,7 @@ HomePageBody = () => {
                 className="me-2"
                 aria-label="Search"
                 onChange={(e) => {
-                  setSearchCompany(e.target.value)
+                  setSearchCompany(e.target.value);
                 }}
               />
             </Form>
@@ -131,41 +138,49 @@ HomePageBody = () => {
         </div>
         <div className="tableBody">
           <Container>
-            <DeviceTable alldata={data} rows={rows} value={showdata.length > 0 ? showdata : data.slice(0, 5)} flag={flag}/>
+            <DeviceTable
+              alldata={data}
+              rows={rows}
+              value={showdata.length > 0 ? showdata : data.slice(0, 5)}
+              flag={flag}
+            />
           </Container>
 
           <Container>
             <div className="tableCaption">
-              <p >
+              <p>
                 Results per page :
-                {data.length > 0 ? pagination.map((data, index) => {
-                  return (
-                    <span
-                      key={index}
-                      onClick={() => {
-                        showData(data);
-                        setRows(data);
-                      }}
-                      style={{
-                        color: "#896EB5",
-                        paddingLeft: "5px",
-                        cursor: "pointer",
-                        fontWeight: 600,
-                      }}
-                    >
-                      {data}
-                    </span>
-                  );
-                })
-                  :
+                {data.length > 0 ? (
+                  pagination.map((data, index) => {
+                    return (
+                      <span
+                        key={index}
+                        onClick={() => {
+                          showData(data);
+                          setRows(data);
+                        }}
+                        style={{
+                          color: "#896EB5",
+                          paddingLeft: "5px",
+                          cursor: "pointer",
+                          fontWeight: 600,
+                        }}
+                      >
+                        {data}
+                      </span>
+                    );
+                  })
+                ) : (
                   <span
                     style={{
                       color: "#896EB5",
                       paddingLeft: "5px",
                       fontWeight: 600,
                     }}
-                  >0 </span>
-                }
+                  >
+                    0{" "}
+                  </span>
+                )}
               </p>
               <p style={{ color: "#896EB5" }}>
                 Showing results in:{" "}
