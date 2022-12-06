@@ -181,7 +181,9 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
                 (tCO<sub>2</sub>e){" "}
               </h6>
               <p>
-                {singleDevice.years[companyName].allscopetotal
+                {singleDevice.years[companyName].scope1 ||
+                singleDevice.years[companyName].scope2_total ||
+                singleDevice.years[companyName].scope3_total
                   ? (
                       singleDevice.years[companyName].scope1 +
                       singleDevice.years[companyName].scope2_total +
