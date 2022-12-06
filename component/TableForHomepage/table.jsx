@@ -39,10 +39,17 @@ const DeviceTable = (props) => {
   }
 
   const encryptId = (id) => {
-    return CryptoJS.AES.encrypt(JSON.stringify(id), "secret-id")
+    return CryptoJS.AES.encrypt(JSON.stringify(id), "123")
       .toString()
-      .replace("/", "afafaf");
+      .replace(/\//g, "afafaf");
   };
+  const id1 = 1;
+  var ciphertext = CryptoJS.AES.encrypt(
+    id1.toString(),
+    "secret key 123"
+  ).toString();
+  var bytes = CryptoJS.AES.decrypt(ciphertext, "secret key 123");
+  var originalText = bytes.toString(CryptoJS.enc.Utf8);
 
   useEffect(() => {
     const offset = currentPage * props.rows;
