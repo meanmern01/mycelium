@@ -3,10 +3,11 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
+import CryptoJS from "crypto-js";
 
 const DeviceTable = (props) => {
   const [value, setValue] = useState(-30);
-  const [filteredData, setFilteredData] = useState([])
+  const [filteredData, setFilteredData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [pageCount, setpageCount] = useState();
 
@@ -15,7 +16,7 @@ const DeviceTable = (props) => {
       width: undefined,
       height: undefined,
     });
-  
+
     useEffect(() => {
       function handleResize() {
         setWindowSize({
@@ -23,47 +24,42 @@ const DeviceTable = (props) => {
           height: window.innerHeight,
         });
       }
-      
+
       window.addEventListener("resize", handleResize);
-       
+
       handleResize();
       return () => window.removeEventListener("resize", handleResize);
-    }, []); 
+    }, []);
     return windowSize;
   }
   const size = useWindowSize();
 
-
-
-
-  // useEffect(() => {
-  //   setNewData(props.value)
-  // }, [props.value])
-
-
-
-    function handlePageClick({ selected: selectedPage }) {
-      setCurrentPage(selectedPage);
-    
+  function handlePageClick({ selected: selectedPage }) {
+    setCurrentPage(selectedPage);
   }
-   useEffect(( ) => {
-      const offset = currentPage * props.rows;
-      const currentPageData = props.alldata.slice(offset, offset + props.rows)
-    
-      setFilteredData(currentPageData);
-      setpageCount(Math.ceil(props.alldata.length / props.rows))
-   },[props.flag,props.alldata,currentPage, props.rows ])
-   
+
+  const encryptId = (id) => {
+    return CryptoJS.AES.encrypt(JSON.stringify(id), "secret-id")
+      .toString()
+      .replace("/", "afafaf");
+  };
+
+  useEffect(() => {
+    const offset = currentPage * props.rows;
+    const currentPageData = props.alldata.slice(offset, offset + props.rows);
+
+    setFilteredData(currentPageData);
+    setpageCount(Math.ceil(props.alldata.length / props.rows));
+  }, [props.flag, props.alldata, currentPage, props.rows]);
 
   return (
-
     <Table id="deviceTable" variant="light" hover>
       <thead>
         <tr>
           <th>Rank</th>
-          <th style={{ textAlign: 'left' }}>Name</th>
-          <th >kg CO2e / £</th>
-          {size.width>600 && <th> Carbon Accountant</th>}
+          <th style={{ textAlign: "left" }}>Name</th>
+          <th>kg CO2e / £</th>
+          {size.width > 600 && <th> Carbon Accountant</th>}
           <th>vs Baseline</th>
           <th>Confidence</th>
           <th></th>
@@ -72,18 +68,15 @@ const DeviceTable = (props) => {
       <tbody>
         {filteredData.map((item, i) => (
           <tr key={i}>
-            <td style={{ color: "#896EB5" }}>{item.rank_number ? item.rank_number : "N/A"}</td>
+            <td style={{ color: "#896EB5" }}>
+              {item.rank_number ? item.rank_number : "N/A"}
+            </td>
 
-            <td style={{ textAlign: 'left', paddingLeft: '10px' }}>
+            <td style={{ textAlign: "left", paddingLeft: "10px" }}>
               <div className="img_heading">
-               {item.company_logo &&
-               <Image
-               className="cls_img_heading"
-                  src={item.company_logo}
-                 
-                />
-              
-                  }
+                {item.company_logo && (
+                  <Image className="cls_img_heading" src={item.company_logo} />
+                )}
                 <p
                   style={{
                     color: "black",
@@ -92,23 +85,23 @@ const DeviceTable = (props) => {
                     textDecoration: null,
                   }}
                 >
-                  <Link className="menuLink" href={`singleDevice/${item.id}`}>
+                  <Link className="menuLink" href={`/${encryptId(item.id)}`}>
                     {item.name ? item.name : "N/A"}
                   </Link>
                 </p>
               </div>
             </td>
-            <td>{item.years[0] ? item.years[0].intensity_per_revenue : 'N/A'}</td>
-            {size.width>600  &&
-            <td className="carbon_img ">
-              {
-                item.years[0]?.carbon_accountant ?
+            <td>
+              {item.years[0] ? item.years[0].intensity_per_revenue : "N/A"}
+            </td>
+            {size.width > 600 && (
+              <td className="carbon_img ">
+                {item.years[0]?.carbon_accountant ? (
                   <Image
-                  className="cls_img_carbon"
+                    className="cls_img_carbon"
                     src={item.years[0].carbon_accountant}
-                   
                   />
-                  :
+                ) : (
                   <p
                     style={{
                       color: "black",
@@ -119,15 +112,18 @@ const DeviceTable = (props) => {
                   >
                     N/A
                   </p>
-              }
-            </td>}
+                )}
+              </td>
+            )}
             <td
               style={{
                 color: value < -10 ? "#6EB575" : "#C0D372",
                 fontWeight: 600,
               }}
             >
-              {item.years[0].exiobase  ? item.years[0].exiobase + '% CO2e' : 'N/A'}
+              {item?.years[0]?.exiobase
+                ? item.years[0].exiobase + "% CO2e"
+                : "N/A"}
             </td>
             <td
               style={{
@@ -135,29 +131,31 @@ const DeviceTable = (props) => {
                 fontWeight: 600,
               }}
             >
-              {item.years[0]?.confidence_score? item.years[0]?.confidence_score + '%' : 'N/A'}
+              {item.years[0]?.confidence_score
+                ? item.years[0]?.confidence_score + "%"
+                : "N/A"}
             </td>
-            <td> <Image src="../arrow.png" height={15} /> </td>
+            <td>
+              {" "}
+              <Image src="../arrow.png" height={15} />{" "}
+            </td>
           </tr>
         ))}
         <tr>
-          <td colSpan={7} >
-          {
-                props.rows >= 0 &&
-                <ReactPaginate
-                    previousLabel={"<"}
-                    nextLabel={">"}
-                    pageCount={pageCount}
-                    onPageChange={handlePageClick}
-                    containerClassName={"pagination"}
-                    previousLinkClassName={"pagination__link"}
-                    nextLinkClassName={"pagination__link"}
-                    disabledClassName={"pagination__link--disabled"}
-                    activeClassName={"pagination__link--active"}
-                />
-
-            }
-
+          <td colSpan={7}>
+            {props.rows >= 0 && (
+              <ReactPaginate
+                previousLabel={"<"}
+                nextLabel={">"}
+                pageCount={pageCount}
+                onPageChange={handlePageClick}
+                containerClassName={"pagination"}
+                previousLinkClassName={"pagination__link"}
+                nextLinkClassName={"pagination__link"}
+                disabledClassName={"pagination__link--disabled"}
+                activeClassName={"pagination__link--active"}
+              />
+            )}
           </td>
         </tr>
       </tbody>
