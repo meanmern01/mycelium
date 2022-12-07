@@ -21,8 +21,16 @@ const TabPanelBody = ({ singleDevice, companyName }) => {
             <div className="informationHolder">
               <h4>Website URL</h4>
               {/* <p style={{ color: "#896EB5" }}>www.grizzle.london</p> */}
-              <p style={{ color: "#896EB5", lineBreak: "anywhere" }}>
-                {singleDevice.website_url ? singleDevice.website_url : "N/A"}
+              <p>
+                <a
+                  style={{ color: "#896EB5", lineBreak: "anywhere" }}
+                  href={
+                    singleDevice.website_url ? singleDevice.website_url : ""
+                  }
+                  target="_blank"
+                >
+                  {singleDevice.website_url ? singleDevice.website_url : "N/A"}
+                </a>
               </p>
             </div>
             <div className="informationHolder">
