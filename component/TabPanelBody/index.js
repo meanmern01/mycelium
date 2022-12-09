@@ -1,7 +1,17 @@
 import { Container, Image } from "react-bootstrap";
 import React, { Component } from "react";
 import Link from "next/link";
-const TabPanelBody = ({ singleDevice, companyName }) => {
+import { useEffect } from "react";
+import axios from "axios";
+const TabPanelBody = ({ value,singleDevice, companyName }) => {
+  useEffect(()=>
+  {
+   console.log(singleDevice.id,"Heyyy")
+   console.log(singleDevice.years[value].id,'hii');
+    axios.get(`http://54.174.180.252:8000/searchSpecificYearData/${singleDevice.years[value].id}/${singleDevice.id}`)
+    .then((res)=>console.log(res))
+    .catch((err)=>console.log(err))
+  },[])
   return (
     <div className="tabPanelBodyMain">
       <div className="tabPanelLeftPart">

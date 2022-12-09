@@ -125,6 +125,7 @@ const TabPanelSingleDevice = ({ productHeaderData }) => {
                   aria-label="basic tabs example"
                 >
                   {productHeaderData?.years?.map((data, index) => {
+                    
                     return <Tab label={data.year} {...a11yProps(index)} />;
                   })}
                 </Tabs>
@@ -135,6 +136,7 @@ const TabPanelSingleDevice = ({ productHeaderData }) => {
                     <TabPanelBody
                       singleDevice={productHeaderData}
                       companyName={index}
+                      value={value}
                     />
                   </TabPanel>
                 );
