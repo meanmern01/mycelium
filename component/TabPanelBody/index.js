@@ -188,8 +188,8 @@ const TabPanelBody = ({ value,singleDevice, companyName }) => {
                 (tCO<sub>2</sub>e){" "}
               </h6>
               <p>
-                {singleDevice.years[companyName].scope3_total
-                  ? singleDevice.years[companyName].scope3_total
+                {singleDevice.years[companyName].scope3_total_original
+                  ? singleDevice.years[companyName].scope3_total_original
                   : "N/A"}
               </p>
             </div>
@@ -201,11 +201,11 @@ const TabPanelBody = ({ value,singleDevice, companyName }) => {
               <p>
                 {singleDevice.years[companyName].scope1 ||
                 singleDevice.years[companyName].scope2_total ||
-                singleDevice.years[companyName].scope3_total
+                singleDevice.years[companyName].scope3_total_original
                   ? (
                       singleDevice.years[companyName].scope1 +
                       singleDevice.years[companyName].scope2_total +
-                      singleDevice.years[companyName].scope3_total
+                      singleDevice.years[companyName].scope3_total_original
                     ).toFixed(2)
                   : "N/A"}
               </p>
