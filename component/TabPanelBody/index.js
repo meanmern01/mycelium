@@ -83,10 +83,9 @@ const TabPanelBody = ({ value,singleDevice, companyName }) => {
                 <Image src="/pdf.png" width={51} height={51} />
                 <p>
                   {
-                    singleDevice.years[companyName].document
-                      .split("/")
-                      .reverse()[0]
+                    singleDevice.years[companyName].document_name
                   }
+                 
                 </p>
               </a>
             </div>
