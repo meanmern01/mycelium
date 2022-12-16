@@ -84,6 +84,8 @@ const TabPanelBody = ({ value,singleDevice, companyName }) => {
                 <p>
                   {
                     singleDevice.years[companyName].document_name
+                    ?singleDevice.years[companyName].document_name
+                    :'NA'
                   }
                  
                 </p>
