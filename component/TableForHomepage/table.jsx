@@ -6,7 +6,6 @@ import ReactPaginate from "react-paginate";
 import CryptoJS from "crypto-js";
 
 const DeviceTable = (props) => {
-  console.log("Dattt6------------->",props.alldata)
   const [value, setValue] = useState(-30);
   const [filteredData, setFilteredData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
@@ -55,7 +54,7 @@ const DeviceTable = (props) => {
   useEffect(() => {
     const offset = currentPage * props.rows;
     const currentPageData = props.alldata.slice(offset, offset + props.rows);
-    
+
     setFilteredData(currentPageData);
     setpageCount(Math.ceil(props.alldata.length / props.rows));
   }, [props.flag, props.alldata, currentPage, props.rows]);
@@ -76,7 +75,6 @@ const DeviceTable = (props) => {
       <tbody>
         {filteredData.map((item, i) => (
           <tr key={i}>
-            
             <td style={{ color: "#896EB5" }}>
               {item.rank_number ? item.rank_number : "N/A"}
             </td>

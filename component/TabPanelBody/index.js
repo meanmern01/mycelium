@@ -5,11 +5,8 @@ import { useEffect } from "react";
 import axios from "axios";
 import { CircularProgress } from "@mui/material";
 const TabPanelBody = ({ value, singleDevice, companyName }) => {
-  console.log(value, "HeyYYYYYYy");
   const [confiDenceSocre, setConfidenceScore] = useState();
   useEffect(() => {
-    console.log(singleDevice.id, "Heyyy");
-    console.log(singleDevice.years[value].id, "hii");
     axios
       .get(
         `http://54.174.180.252:8000/searchSpecificYearData/${singleDevice.years[value].id}/${singleDevice.id}`
