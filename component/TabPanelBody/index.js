@@ -1,17 +1,22 @@
 import { Container, Image } from "react-bootstrap";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import Link from "next/link";
 import { useEffect } from "react";
 import axios from "axios";
-const TabPanelBody = ({ value,singleDevice, companyName }) => {
-  useEffect(()=>
-  {
-   console.log(singleDevice.id,"Heyyy")
-   console.log(singleDevice.years[value].id,'hii');
-    axios.get(`http://54.174.180.252:8000/searchSpecificYearData/${singleDevice.years[value].id}/${singleDevice.id}`)
-    .then((res)=>console.log(res))
-    .catch((err)=>console.log(err))
-  },[])
+import { CircularProgress } from "@mui/material";
+const TabPanelBody = ({ value, singleDevice, companyName }) => {
+  console.log(value, "HeyYYYYYYy");
+  const [confiDenceSocre, setConfidenceScore] = useState();
+  useEffect(() => {
+    console.log(singleDevice.id, "Heyyy");
+    console.log(singleDevice.years[value].id, "hii");
+    axios
+      .get(
+        `http://54.174.180.252:8000/searchSpecificYearData/${singleDevice.years[value].id}/${singleDevice.id}`
+      )
+      .then((res) => setConfidenceScore(res.data.confidenceScore))
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <div className="tabPanelBodyMain">
       <div className="tabPanelLeftPart">
@@ -82,12 +87,9 @@ const TabPanelBody = ({ value,singleDevice, companyName }) => {
               >
                 <Image src="/pdf.png" width={51} height={51} />
                 <p>
-                  {
-                    singleDevice.years[companyName].document_name
-                    ?singleDevice.years[companyName].document_name
-                    :'NA'
-                  }
-                 
+                  {singleDevice.years[companyName].document_name
+                    ? singleDevice.years[companyName].document_name
+                    : "NA"}
                 </p>
               </a>
             </div>
@@ -117,10 +119,12 @@ const TabPanelBody = ({ value,singleDevice, companyName }) => {
             <div className="informationHolder">
               <h4>Confidence Score</h4>
               <div className="subInformationHolder2">
-                {singleDevice.years[companyName].confidence_score ? (
-                  <p>{singleDevice.years[companyName].confidence_score} %</p>
+                {confiDenceSocre ? (
+                  <p>{confiDenceSocre} %</p>
                 ) : (
-                  <p>N/A</p>
+                  <p>
+                    <CircularProgress color="success" />
+                  </p>
                 )}
               </div>
             </div>

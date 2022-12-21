@@ -12,7 +12,7 @@ const SingleProduct = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
- 
+
   useEffect(() => {
     details();
   }, []);
@@ -21,17 +21,18 @@ const SingleProduct = () => {
     try {
       setLoading(true);
       setError(null);
-      console.log('hello',window.location.pathname);
+      console.log("hello", window.location.pathname);
       if (window.location.pathname.split("/")[1]) {
         var id = window.location.pathname
           .split("/")[1]
           .replace(/(afafaf)/g, "/");
 
         var bytes = CryptoJS.AES.decrypt(id.toString(), "123");
-        var decryptedData = bytes.toString(CryptoJS.enc.Utf8);  
+        var decryptedData = bytes.toString(CryptoJS.enc.Utf8);
         const detail = await axios.get(
           `http://54.174.180.252:8000/searchDataById/${decryptedData}`
         );
+        console.log(detail, "Heu");
         setData(detail.data.Data);
       }
       setLoading(false);
